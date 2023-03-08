@@ -41,8 +41,9 @@ static int cmd_si(char *args) {
 }
 static int cmd_info(char* args){
   if(strcmp(args,"r")==0){
-     
+     print_reg_info();
   }
+  return 0;
 }
 static int cmd_help(char *args);
 static struct {
