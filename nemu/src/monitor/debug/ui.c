@@ -1,3 +1,4 @@
+#include "cpu/reg.h"
 #include "monitor/monitor.h"
 #include "monitor/expr.h"
 #include "monitor/watchpoint.h"
@@ -38,6 +39,11 @@ static int cmd_si(char *args) {
   else cpu_exec(atoi(args));
   return 0;
 }
+static int cmd_info(char* args){
+  if(strcmp(args,"r")==0){
+     
+  }
+}
 static int cmd_help(char *args);
 static struct {
   char *name;
@@ -47,7 +53,8 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  { "si", "excute next n instructions and stop",cmd_si}
+  { "si", "excute next n instructions and stop",cmd_si},
+  {"info","print reg info or breakpoint info",cmd_info}
   /* TODO: Add more commands */
 
 };
