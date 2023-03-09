@@ -47,8 +47,8 @@ static int cmd_info(char* args){
 }
 static int cmd_p(char* args){
   bool success=false;
-  double ans=expr(args,&success);
-  printf("%lf\n",ans);
+  int ans=expr(args,&success);
+  printf("%d\n",ans);
   return 0;
 }
 static int cmd_help(char *args);
