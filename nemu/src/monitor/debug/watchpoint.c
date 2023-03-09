@@ -37,10 +37,10 @@ void delete_watch_point(int NO) {
     if(t->NO==NO){
       t->val=INF;
       WP* t1=free_;
-      free_=t;
-      free_->next=t1;
       if(t->back!=NULL) t->back->next=t->next;
       if(t->next!=NULL) t->next->back=t->back;
+      free_=t;
+      free_->next=t1;
       if(head==t) head=t->next;
       break;
     }  else t=t->next;
