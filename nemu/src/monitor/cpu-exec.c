@@ -30,7 +30,10 @@ void cpu_exec(uint64_t n) {
 #ifdef DEBUG
     /* TODO: check watchpoints here. */
     extern void check_watchpoints();
-    if(check_watch_points()) return;
+    if(check_watch_points()) {
+      printf("changed\n");
+      return;
+    }
 #endif
 
 #ifdef HAS_IOE
