@@ -21,10 +21,11 @@ void init_wp_pool() {
 void add_watch_point(char *args) {
   if(free_==NULL) assert(0);
   WP *t = head;
+  WP* t1=free_->next;
   head = free_;
   head->next = t;
   if(t!=NULL)t->back=head;
-  free_ = free_->next;
+  free_ = t1;
   free_->back=NULL;
   
 }
