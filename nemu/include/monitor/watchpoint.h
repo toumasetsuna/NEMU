@@ -13,4 +13,5 @@ typedef struct watchpoint {
 } WP;
 void add_watch_point();
 bool check_watch_points();
+void delete_watch_point(int NO);
 #endif

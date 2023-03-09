@@ -3,6 +3,7 @@
 #include "monitor/expr.h"
 #include "monitor/watchpoint.h"
 #include "nemu.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -39,6 +40,10 @@ static int cmd_si(char *args) {
   else cpu_exec(atoi(args));
   return 0;
 }
+static int cmd_w(char* args){
+  add_watch_point(args);
+  return 0;
+}
 static int cmd_info(char* args){
   if(strcmp(args,"r")==0){
      print_reg_info();
@@ -51,6 +56,12 @@ static int cmd_p(char* args){
   printf("%d\n",ans);
   return 0;
 }
+static int cmd_d(char* args){
+  int NO;
+  sscanf(args,"%d",&NO);
+  delete_watch_point(NO);
+  return 0;
+}
 static int cmd_help(char *args);
 static struct {
   char *name;
@@ -61,10 +72,11 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "excute next n instructions and stop",cmd_si},
-  {"info","print reg info or breakpoint info",cmd_info},
-  { "p", "solve the result of the expression",cmd_p}
+  { "info","print reg info or breakpoint info",cmd_info},
+  { "p", "solve the result of the expression",cmd_p},
+  { "w","wait when expression value change",cmd_w},
+  { "d","delete the watch point with spefic NO",cmd_d}
   /* TODO: Add more commands */
-
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))
