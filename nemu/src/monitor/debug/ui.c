@@ -45,6 +45,12 @@ static int cmd_info(char* args){
   }
   return 0;
 }
+static int cmd_p(char* args){
+  bool success=false;
+  double ans=expr(args,&success);
+  printf("%lf\n",ans);
+  return 0;
+}
 static int cmd_help(char *args);
 static struct {
   char *name;
@@ -55,7 +61,8 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "excute next n instructions and stop",cmd_si},
-  {"info","print reg info or breakpoint info",cmd_info}
+  {"info","print reg info or breakpoint info",cmd_info},
+  { "p", "solve the result of the expression",cmd_p}
   /* TODO: Add more commands */
 
 };
