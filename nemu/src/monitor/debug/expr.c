@@ -190,6 +190,7 @@ uint32_t expr(char *e, bool *success) {
     }
     if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ){
        Token cur_op=tokens[i];
+       cur_op.if_unary=if_unary;
       while(!op_empty()
         &&(!cur_op.if_unary&&cur_op.level>=top(&op_stack).level)
         &&(cur_op.if_unary&&cur_op.level>top(&op_stack).level)
