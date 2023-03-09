@@ -62,6 +62,9 @@ static int cmd_d(char* args){
   delete_watch_point(NO);
   return 0;
 }
+static int cmd_show_points(char* args){
+  show_watch_points();
+}
 static int cmd_help(char *args);
 static struct {
   char *name;
@@ -75,7 +78,8 @@ static struct {
   { "info","print reg info or breakpoint info",cmd_info},
   { "p", "solve the result of the expression",cmd_p},
   { "w","wait when expression value change",cmd_w},
-  { "d","delete the watch point with spefic NO",cmd_d}
+  { "d","delete the watch point with spefic NO",cmd_d},
+  {"showpts","show all the watch points",cmd_show_points}
   /* TODO: Add more commands */
 };
 
