@@ -17,7 +17,9 @@ void init_wp_pool() {
   head = NULL;
   free_ = wp_pool;
 }
-
+void add_watch_point(){
+   
+}
 /* TODO: Implement the functionality of watchpoint */
 
 
