@@ -183,9 +183,9 @@ uint32_t expr(char *e, bool *success) {
     if(tokens[i].type==')'){
       while(!op_empty()){
         Token t=top(&op_stack);
+        pop(&op_stack);
         if(t.type=='(') break;
         push(&stack,t); 
-        pop(&op_stack);
       }
     }
     if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ){
