@@ -59,7 +59,7 @@ void init_regex() {
 
 typedef struct token {
   int type;
-  double val;
+  int val;
   bool if_unary;
   int level;
 } Token;
