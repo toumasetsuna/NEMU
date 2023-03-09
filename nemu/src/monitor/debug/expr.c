@@ -33,9 +33,9 @@ static struct rule {
   {"==", TK_EQ},         // equal
   {"[1-9][0-9]*|0|0x[0-9a-f]+", TK_INT},
   {"$[a-z]+", TK_REG},
-  {"(",'('},
-  {")",')'},
-};
+  {"\\(",'('},
+  {"\\)",')'}
+  };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
 
