@@ -12,9 +12,7 @@ extern const char* regsw[];
 extern const char* regsb[];
 enum {
   TK_NOTYPE = 256, TK_EQ, TK_INT, TK_REG
-
   /* TODO: Add more token types */
-
 };
 
 static struct rule {
