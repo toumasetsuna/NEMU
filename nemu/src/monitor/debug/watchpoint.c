@@ -45,6 +45,7 @@ void delete_watch_point(int NO) {
       break;
     }  else t=t->next;
   }
+  assert(1);
 }
 bool check_watch_points() {
   WP* t=head;
