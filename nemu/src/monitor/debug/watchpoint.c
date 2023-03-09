@@ -41,6 +41,7 @@ void delete_watch_point(int NO) {
       free_->next=t1;
       if(t->back!=NULL) t->back->next=t->next;
       if(t->next!=NULL) t->next->back=t->back;
+      if(head==t) head=t->next;
       break;
     }  else t=t->next;
   }
