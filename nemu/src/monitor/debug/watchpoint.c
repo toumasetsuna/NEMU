@@ -29,7 +29,7 @@ void add_watch_point(char *args) {
   free_ = t1;
   free_->back=NULL;
   bool success;
-  t->val=expr(args, &success);
+  head->val=expr(args, &success);
 }
 void delete_watch_point(int NO) {
   WP *t=head;
