@@ -60,4 +60,11 @@ bool check_watch_points() {
   }
   return change;
 }
+void show_watch_points(){
+   WP* t=head;
+  while(t!=NULL){
+    printf("watch point %d: %s\tvalue: %d\n",t->NO,t->args,t->val);
+    t=t->next;
+  }
+}
 /* TODO: Implement the functionality of watchpoint */
