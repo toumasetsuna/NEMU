@@ -178,7 +178,7 @@ uint32_t expr(char *e, bool *success) {
     }
     if(tokens[i].type=='('){
        push(&op_stack,tokens[i]);
-       if_unary=false;
+       if_unary=true;
     }
     if(tokens[i].type==')'){
       while(!op_empty()){
