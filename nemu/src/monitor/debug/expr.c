@@ -111,15 +111,15 @@ static bool make_token(char *e) {
           case TK_REG:
             tokens[nr_token].type=rules[i].token_type;
             for(int i=0;i<8;i++){
-              if(strcmp(&e[position+1],regsl[i])==0){
+              if(strncmp(&e[position+1],regsl[i],3)==0){
                 tokens[nr_token].val=reg_l(i);
                 break;
               }
-              if(strcmp(&e[position+1],regsb[i])==0){
+              if(strncmp(&e[position+1],regsb[i],3)==0){
                 tokens[nr_token].val=reg_b(i);
                 break;
               }
-              if(strcmp(&e[position+1],regsw[i])==0){
+              if(strncmp(&e[position+1],regsw[i],2)==0){
                 tokens[nr_token].val=reg_w(i);
                 break;
               }
