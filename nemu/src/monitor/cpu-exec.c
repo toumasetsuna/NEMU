@@ -31,7 +31,8 @@ void cpu_exec(uint64_t n) {
     /* TODO: check watchpoints here. */
     extern void check_watchpoints();
     if(check_watch_points()) {
-      printf("changed\n");
+      //printf("changed\n");
+      show_watch_points();
       return;
     }
 #endif
