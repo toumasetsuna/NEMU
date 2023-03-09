@@ -2,7 +2,7 @@
 #include "monitor/expr.h"
 #include <assert.h>
 #define NR_WP 32
-#define INF 0xffffffff;
+#define INF 0xfffffff;
 static WP wp_pool[NR_WP];
 static WP *head, *free_;
 void init_wp_pool() {
