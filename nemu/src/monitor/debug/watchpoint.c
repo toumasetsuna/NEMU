@@ -24,6 +24,7 @@ void add_watch_point(char *args) {
   WP* t1=free_->next;
   head = free_;
   head->next = t;
+  strcpy(head->args,args);
   if(t!=NULL)t->back=head;
   free_ = t1;
   free_->back=NULL;
