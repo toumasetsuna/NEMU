@@ -94,12 +94,12 @@ static bool make_token(char *e) {
             break;
           case '*':
           case '/':
-          case '(':
-          case ')':
             tokens[nr_token].type=rules[i].token_type;
             tokens[nr_token++].level=1;
             break;
           case TK_EQ:
+          case '(':
+          case ')':
             tokens[nr_token].type=rules[i].token_type;
             tokens[nr_token++].level=2;
             break;
@@ -184,7 +184,7 @@ uint32_t expr(char *e, bool *success) {
       while(!op_empty()){
         Token t=top(&op_stack);
         if(t.type=='(') break;
-        push(&stack,t);
+        push(&stack,t); 
         pop(&op_stack);
       }
     }
