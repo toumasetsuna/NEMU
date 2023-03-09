@@ -23,7 +23,7 @@ void add_watch_point(char *args) {
   WP *t = head;
   head = free_;
   head->next = t;
-  t->back=head;
+  if(t!=NULL)t->back=head;
   free_ = free_->next;
   free_->back=NULL;
   
