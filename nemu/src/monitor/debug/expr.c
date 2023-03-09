@@ -89,38 +89,38 @@ static bool make_token(char *e) {
             break;
           case '+':
           case '-':
-            tokens[nr_token++].type=rules[i].token_type;
-            tokens[nr_token].level=1;
+            tokens[nr_token].type=rules[i].token_type;
+            tokens[nr_token++].level=1;
             break;
           case '*':
           case '/':
           case '(':
           case ')':
-            tokens[nr_token++].type=rules[i].token_type;
-            tokens[nr_token].level=1;
+            tokens[nr_token].type=rules[i].token_type;
+            tokens[nr_token++].level=1;
             break;
           case TK_EQ:
-            tokens[nr_token++].type=rules[i].token_type;
-            tokens[nr_token].level=2;
+            tokens[nr_token].type=rules[i].token_type;
+            tokens[nr_token++].level=2;
             break;
           case TK_INT:
-            tokens[nr_token++].type=rules[i].token_type;
+            tokens[nr_token].type=rules[i].token_type;
             if(e[position]==0)sscanf(&e[position],"%x",&tokens[nr_token++].val);
             else sscanf(&e[position],"%d",&tokens[nr_token++].val);
             break;
           case TK_REG:
-            tokens[nr_token++].type=rules[i].token_type;
+            tokens[nr_token].type=rules[i].token_type;
             for(int i=0;i<8;i++){
               if(strcmp(&e[position+1],regsl[i])==0){
-                tokens[nr_token].val=reg_l(i);
+                tokens[nr_token++].val=reg_l(i);
                 break;
               }
               if(strcmp(&e[position+1],regsb[i])==0){
-                tokens[nr_token].val=reg_b(i);
+                tokens[nr_token++].val=reg_b(i);
                 break;
               }
               if(strcmp(&e[position+1],regsw[i])==0){
-                tokens[nr_token].val=reg_w(i);
+                tokens[nr_token++].val=reg_w(i);
                 break;
               }
             }
