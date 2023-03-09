@@ -40,10 +40,6 @@ static int cmd_si(char *args) {
   else cpu_exec(atoi(args));
   return 0;
 }
-static int cmd_w(char* args){
-  add_watch_point(args);
-  return 0;
-}
 static int cmd_info(char* args){
   if(strcmp(args,"r")==0){
      print_reg_info();
@@ -54,6 +50,10 @@ static int cmd_p(char* args){
   bool success=false;
   int ans=expr(args,&success);
   printf("%d\n",ans);
+  return 0;
+}
+static int cmd_w(char* args){
+  add_watch_point(args);
   return 0;
 }
 static int cmd_d(char* args){
