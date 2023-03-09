@@ -187,6 +187,7 @@ uint32_t expr(char *e, bool *success) {
         if(t.type=='(') break;
         push(&stack,t); 
       }
+      if_unary=false;
     }
     if(tokens[i].type=='+'||tokens[i].type=='-'||tokens[i].type=='*'||tokens[i].type=='/'||tokens[i].type==TK_EQ){
        Token cur_op=tokens[i];
@@ -200,6 +201,7 @@ uint32_t expr(char *e, bool *success) {
         pop(&op_stack);
       }
       push(&op_stack,cur_op);
+      if_unary=true;
     }
   }
   while(!op_empty()){
