@@ -201,12 +201,12 @@ uint32_t expr(char *e, bool *success) {
       push(&op_stack,cur_op);
     }
   }
-   while(!op_empty()){
-        Token t=top(&op_stack);
-        if(t.type=='(') break;
-        push(&stack,t);
-        pop(&op_stack);
-      }
+  while(!op_empty()){
+    Token t=top(&op_stack);
+    if(t.type=='(') break;
+    push(&stack,t);
+    pop(&op_stack);
+  }
   /* TODO: Insert codes to evaluate the expression. */
   for(int i=0;i<stack.height;i++){
     Token cur=stack.stack[i];
