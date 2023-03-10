@@ -1,3 +1,4 @@
+#include "memory/memory.h"
 #include "nemu.h"
 
 /* We use the POSIX regex functions to process regular expressions.
@@ -220,7 +221,10 @@ uint32_t expr(char *e, bool *success) {
         Token t=top(&num_stack);
         pop(&num_stack);
         if(cur.type=='-') t.val=-t.val;
+        if(cur.type=='+') t.val=t.val;
+        if(cur.type=='*') t.val=vaddr_read(t.val,4);
         push(&num_stack,t);
+
       }else{
         Token t1=top(&num_stack);
         pop(&num_stack);
