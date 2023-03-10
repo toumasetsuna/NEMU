@@ -1,8 +1,10 @@
 #include "cpu/reg.h"
+#include "memory/memory.h"
 #include "monitor/monitor.h"
 #include "monitor/expr.h"
 #include "monitor/watchpoint.h"
 #include "nemu.h"
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <readline/readline.h>
@@ -65,6 +67,18 @@ static int cmd_d(char* args){
 static int cmd_show_points(char* args){
   show_watch_points();
 }
+static int cmd_scan_memory(char* args){
+  int N;
+  sscanf(args, "%d", &N);
+  char *t = strtok(args, " ");
+  char *expr1=args+strlen(t)+1;
+  bool success;
+  uint32_t addr=expr(expr1,&success); 
+  for(int i=0;i<N;i++){
+    uint32_t ans=vaddr_read(addr+4*i, 4);
+    printf("%x :%x\n",addr,ans);
+  }
+}
 static int cmd_help(char *args);
 static struct {
   char *name;
@@ -78,8 +92,9 @@ static struct {
   { "info","print reg info or breakpoint info",cmd_info},
   { "p", "solve the result of the expression",cmd_p},
   { "w","wait when expression value change",cmd_w},
-  { "d","delete the watch point with spefic NO",cmd_d},
-  {"showpts","show all the watch points",cmd_show_points}
+  { "d","delete the watch point with specific NO",cmd_d},
+  {"showpts","show all the watch points",cmd_show_points},
+  {"x","scan next n words from the specific address",cmd_scan_memory}
   /* TODO: Add more commands */
 };
 
