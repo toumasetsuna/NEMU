@@ -76,7 +76,7 @@ static int cmd_scan_memory(char* args){
   uint32_t addr=expr(expr1,&success); 
   for(int i=0;i<N;i++){
     uint32_t ans=vaddr_read(addr+4*i, 4);
-    printf("%x :%x\n",addr,ans);
+    printf("0x%x\t:0x%x\n",addr,ans);
   }
 }
 static int cmd_help(char *args);
