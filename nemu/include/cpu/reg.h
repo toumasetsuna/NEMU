@@ -61,6 +61,7 @@ static void print_reg_info(){
     printf("%s: %d\t",reg_name(j,4),reg_l(j));
     printf("%s: %d\t",reg_name(j,2),reg_w(j));
     printf("%s: %d\n\n",reg_name(j,1),reg_b(j));
-  }    
+  }
+  printf("eip: %d",cpu.eip);    
 }
 #endif
