@@ -42,9 +42,14 @@ static int cmd_si(char *args) {
   else cpu_exec(atoi(args));
   return 0;
 }
+
+
 static int cmd_info(char* args){
   if(strcmp(args,"r")==0){
      print_reg_info();
+  }
+  if(strcmp(args,"w")==0){
+    show_watch_points();
   }
   return 0;
 }
@@ -66,6 +71,7 @@ static int cmd_d(char* args){
 }
 static int cmd_show_points(char* args){
   show_watch_points();
+  return 0;
 }
 static int cmd_scan_memory(char* args){
   int N;
@@ -78,6 +84,7 @@ static int cmd_scan_memory(char* args){
     uint32_t ans=vaddr_read(addr+4*i, 4);
     printf("0x%x\t:0x%x\n",addr+4*i,ans);
   }
+  return 0;
 }
 static int cmd_help(char *args);
 static struct {
