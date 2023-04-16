@@ -3,6 +3,7 @@
 
 typedef struct {
   DHelper decode;
+  //DHELPER: receive eip,change the deocding struct
   EHelper execute;
   int width;
 } opcode_entry;
@@ -10,10 +11,10 @@ typedef struct {
 #define IDEXW(id, ex, w)   {concat(decode_, id), concat(exec_, ex), w}
 #define IDEX(id, ex)       IDEXW(id, ex, 0)
 #define EXW(ex, w)         {NULL, concat(exec_, ex), w}
-#define EX(ex)             EXW(ex, 0)
+#define EX(ex)             EXW(ex, 0)// no decoding no operand width
 #define EMPTY              EX(inv)
 
-static inline void set_width(int width) {
+static inline void set_width(int width) {//set the width of operand width
   if (width == 0) {
     width = decoding.is_operand_size_16 ? 2 : 4;
   }
@@ -28,8 +29,12 @@ static inline void idex(vaddr_t *eip, opcode_entry *e) {
   e->execute(eip);
 }
 
-static make_EHelper(2byte_esc);
+static make_EHelper(2byte_esc);//exec_2byte_esc(vaddr_t *eip)
 
+/*static opcode_entry opcode_table_name[8] = {item0,...,item7};
+exec_name(vaddr_t *eip){
+  according to the decoding extend_opcode find in opcode_table_name to execute the whole opcode 
+}*/
 #define make_group(name, item0, item1, item2, item3, item4, item5, item6, item7) \
   static opcode_entry concat(opcode_table_, name) [8] = { \
     /* 0x00 */	item0, item1, item2, item3, \
@@ -76,6 +81,7 @@ opcode_entry opcode_table [512] = {
   /* 0x04 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x08 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x0c */	EMPTY, EMPTY, EMPTY, EX(2byte_esc),
+  //{null,exec_2byte_esc,0}
   /* 0x10 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x14 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x18 */	EMPTY, EMPTY, EMPTY, EMPTY,
@@ -130,7 +136,7 @@ opcode_entry opcode_table [512] = {
   /* 0xdc */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xe0 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xe4 */	EMPTY, EMPTY, EMPTY, EMPTY,
-  /* 0xe8 */	EMPTY, EMPTY, EMPTY, EMPTY,
+  /* 0xe8 */	EX(call), EMPTY, EMPTY, EMPTY,
   /* 0xec */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xf0 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xf4 */	EMPTY, EMPTY, IDEXW(E, gp3, 1), IDEX(E, gp3),
@@ -213,9 +219,9 @@ static make_EHelper(2byte_esc) {
 }
 
 make_EHelper(real) {
-  uint32_t opcode = instr_fetch(eip, 1);
+  uint32_t opcode = instr_fetch(eip, 1);//read one byte and change eip to eip+1
   decoding.opcode = opcode;
-  set_width(opcode_table[opcode].width);
+  set_width(opcode_table[opcode].width);//set width according to the opcode
   idex(eip, &opcode_table[opcode]);
 }
 
