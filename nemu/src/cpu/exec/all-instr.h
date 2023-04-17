@@ -1,6 +1,8 @@
 #include "cpu/exec.h"
+
 //data-mov
 make_EHelper(mov);
+make_EHelper(pop);
 
 //control
 make_EHelper(call);
