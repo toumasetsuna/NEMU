@@ -11,7 +11,7 @@ make_EHelper(mov);
 make_EHelper(pop);
 make_EHelper(push);
 make_EHelper(lea);
-make_EHelper(achg);
+make_EHelper(movzx);
 //control
 make_EHelper(call);
 make_EHelper(ret);
