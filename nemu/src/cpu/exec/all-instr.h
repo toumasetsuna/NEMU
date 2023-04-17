@@ -18,6 +18,7 @@ make_EHelper(ret);
 
 //logic
 make_EHelper(xor);
+make_EHelper(or);
 make_EHelper(and);
 
 //special
