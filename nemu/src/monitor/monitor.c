@@ -33,7 +33,7 @@ static inline void welcome() {
 }
 
 static inline int load_default_img() {
-  const uint8_t img []  = {
+/* const uint8_t img []  = {
     0xb8, 0x34, 0x12, 0x00, 0x00,        // 100000:  movl  $0x1234,%eax
     0xb9, 0x27, 0x00, 0x10, 0x00,        // 100005:  movl  $0x100027,%ecx
     0x89, 0x01,                          // 10000a:  movl  %eax,(%ecx)
@@ -44,7 +44,27 @@ static inline int load_default_img() {
     0xb8, 0x00, 0x00, 0x00, 0x00,        // 100021:  movl  $0x0,%eax
     0xd6,                                // 100026:  nemu_trap
   };
+*/
+const uint8_t img []  = {
+  
+  0xbd, 0x00, 0x00, 0x00, 0x00,       	//mov    $0x0,%ebp
+  0xbc, 0x00, 0x7c, 0x00, 0x00,       	//mov    $0x7c00,%esp
+  0xe8, 0x01, 0x00, 0x00, 0x00,  //     	call   100010 <_trm_init>
+  0x90,                //   	nop
 
+//00100010 <_trm_init>:
+  0x55,                   //	push   %ebp
+  0x89, 0xe5,                // mov    %esp,%ebp
+  0x83, 0xec, 0x08,             	//sub    $0x8,%esp
+  0xe8, 0x05, 0x00, 0x00, 0x00,       	//call   100020 <main>
+  0xd6,                   	//(bad)  
+  0xeb, 0xfe,                	//jmp    10001c <_trm_init+0xc>
+  0x66, 0x90,                	//xchg   %ax,%ax
+
+//00100020 <main>:
+  0x31, 0xc0,                	//xor    %eax,%eax
+  0xc3,                   	//ret  
+};
   Log("No image is given. Use the default build-in image.");
 
   memcpy(guest_to_host(ENTRY_START), img, sizeof(img));
