@@ -3,6 +3,7 @@
 //data-mov
 make_EHelper(mov);
 make_EHelper(pop);
+make_EHelper(push);
 
 //control
 make_EHelper(call);
