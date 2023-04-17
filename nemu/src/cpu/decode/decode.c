@@ -1,5 +1,6 @@
 #include "cpu/exec.h"
 #include "cpu/rtl.h"
+#include <stdint.h>
 
 /* shared by all helper functions */
 DecodeInfo decoding;
@@ -38,7 +39,10 @@ static inline make_DopHelper(SI) {
    *
    op->simm = ???
    */
-  op->simm = (int32_t)instr_fetch(eip, op->width);
+  uint32_t x=instr_fetch(eip, op->width);;
+  if(op->width==1) op->simm=(int8_t)x;
+  if(op->width==2) op->simm=(int16_t)x;
+  if(op->width==4) op->simm=x; 
   rtl_li(&op->val, op->simm);
 
 #ifdef DEBUG
