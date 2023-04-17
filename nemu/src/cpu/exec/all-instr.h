@@ -1,4 +1,6 @@
 #include "cpu/exec.h"
+//arith
+make_EHelper(sub);
 
 //data-mov
 make_EHelper(mov);
@@ -7,6 +9,9 @@ make_EHelper(push);
 
 //control
 make_EHelper(call);
+make_EHelper(ret);
+//logic
+make_EHelper(xor);
 
 //special
 make_EHelper(operand_size);

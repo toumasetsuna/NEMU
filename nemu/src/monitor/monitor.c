@@ -1,3 +1,4 @@
+#include "cpu/reg.h"
 #include "nemu.h"
 #include <unistd.h>
 
@@ -82,7 +83,11 @@ static inline void load_img() {
 static inline void restart() {
   /* Set the initial instruction pointer. */
   cpu.eip = ENTRY_START;
-
+  cpu.eflag.CF = 0;
+  cpu.eflag.IF = 0;
+  cpu.eflag.OF = 0;
+  cpu.eflag.SF = 0;
+  cpu.eflag.ZF = 0;
 #ifdef DIFF_TEST
   init_qemu_reg();
 #endif

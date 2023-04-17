@@ -3,6 +3,7 @@
 
 #include "common.h"
 
+
 enum { R_EAX, R_ECX, R_EDX, R_EBX, R_ESP, R_EBP, R_ESI, R_EDI };
 enum { R_AX, R_CX, R_DX, R_BX, R_SP, R_BP, R_SI, R_DI };
 enum { R_AL, R_CL, R_DL, R_BL, R_AH, R_CH, R_DH, R_BH };
@@ -29,7 +30,13 @@ typedef struct {
   struct{rtlreg_t eax, ecx, edx, ebx, esp, ebp, esi, edi;};
   };
   vaddr_t eip;
-
+  struct Eflag{
+    unsigned int CF: 1;
+    unsigned int ZF: 1;
+    unsigned int SF: 1;
+    unsigned int IF: 1;
+    unsigned int OF: 1;
+  } eflag;
 } CPU_state;
 
 extern CPU_state cpu;

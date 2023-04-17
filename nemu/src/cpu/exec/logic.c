@@ -1,3 +1,4 @@
+#include "cpu/decode.h"
 #include "cpu/exec.h"
 
 make_EHelper(test) {
@@ -13,8 +14,7 @@ make_EHelper(and) {
 }
 
 make_EHelper(xor) {
-  TODO();
-
+  rtl_xor(&id_dest->val,&id_src->val,&id_dest->val);
   print_asm_template2(xor);
 }
 
