@@ -20,7 +20,7 @@ make_EHelper(ret);
 make_EHelper(xor);
 make_EHelper(or);
 make_EHelper(and);
-
+make_EHelper(setcc);
 //special
 make_EHelper(operand_size);
 make_EHelper(inv);
