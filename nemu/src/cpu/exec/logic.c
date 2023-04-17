@@ -10,14 +10,12 @@ make_EHelper(test) {
 }
 
 make_EHelper(and) {
-  
-  rtl_andi(&id_dest->val,&id_src->val,id_dest->simm);
-  
+  rtl_and(&id_dest->val,&id_src->val,&id_dest->val);
   operand_write(id_dest,&id_dest->val);
   rtl_update_ZFSF(&id_dest->val,id_dest->width);
   cpu.eflag.CF=0;
   cpu.eflag.OF=0;
-  //print_asm_template2(and);
+  print_asm_template2(and);
 }
 
 make_EHelper(xor) {
