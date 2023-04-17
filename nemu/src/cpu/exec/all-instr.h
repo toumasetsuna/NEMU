@@ -11,8 +11,10 @@ make_EHelper(lea);
 //control
 make_EHelper(call);
 make_EHelper(ret);
+
 //logic
 make_EHelper(xor);
+make_EHelper(and);
 
 //special
 make_EHelper(operand_size);
