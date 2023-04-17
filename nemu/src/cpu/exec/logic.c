@@ -4,7 +4,10 @@
 #include "cpu/rtl.h"
 
 make_EHelper(test) {
-  TODO();
+  rtl_and(&id_dest->val,&id_src->val,&id_dest->val);
+  rtl_update_ZFSF(&id_dest->val,id_dest->width);
+  cpu.eflag.CF=0;
+  cpu.eflag.OF=0;
 
   print_asm_template2(test);
 }
