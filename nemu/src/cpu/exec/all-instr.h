@@ -3,7 +3,9 @@
 make_EHelper(nop);
 //arith
 make_EHelper(sub);
+make_EHelper(sbb);
 make_EHelper(add);
+make_EHelper(adc);
 //data-mov
 make_EHelper(mov);
 make_EHelper(pop);
