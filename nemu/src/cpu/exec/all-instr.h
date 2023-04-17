@@ -15,7 +15,7 @@ make_EHelper(movzx);
 //control
 make_EHelper(call);
 make_EHelper(ret);
-
+make_EHelper(jcc);
 //logic
 make_EHelper(xor);
 make_EHelper(or);
