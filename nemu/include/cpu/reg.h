@@ -65,9 +65,9 @@ static inline const char* reg_name(int index, int width) {
 }
 static void print_reg_info(){
   for(int j=0;j<8;j++){
-    printf("%s: %d\t",reg_name(j,4),reg_l(j));
-    printf("%s: %d\t",reg_name(j,2),reg_w(j));
-    printf("%s: %d\n\n",reg_name(j,1),reg_b(j));
+    printf("%s: 0x%08x\t",reg_name(j,4),reg_l(j));
+    printf("%s: 0x%08x\t",reg_name(j,2),reg_w(j));
+    printf("%s: 0x%08x\n\n",reg_name(j,1),reg_b(j));
   }
   printf("eip: %d",cpu.eip);    
 }
