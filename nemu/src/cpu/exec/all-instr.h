@@ -6,6 +6,7 @@ make_EHelper(sub);
 make_EHelper(mov);
 make_EHelper(pop);
 make_EHelper(push);
+make_EHelper(lea);
 
 //control
 make_EHelper(call);
