@@ -1,6 +1,8 @@
 #include "cpu/exec.h"
 #include "all-instr.h"
-
+#ifndef DIFF_TEST
+#define DIFF_TEST
+#endif
 
 typedef struct {
   DHelper decode;
