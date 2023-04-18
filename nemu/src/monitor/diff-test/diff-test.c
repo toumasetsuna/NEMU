@@ -188,6 +188,15 @@ void difftest_step(uint32_t eip) {
     printf("eip diff\n");
     diff=true;
   }
+  uint32_t rcf=0,rzf=0,rsf=0,rof=0;
+  if((r.eflags&0x1)==1) rcf=1;
+  if(((r.eflags>>6)&0x1)==1) rzf=1;
+  if(((r.eflags>>7)&0x1)==1) rsf=1;
+  if(((r.eflags>>11)&0x1)==1) rof=1;
+  if(rcf!=cpu.eflag.CF) printf("CF diff\n");
+  if(rzf!=cpu.eflag.ZF) printf("ZF diff\n");
+  if(rsf!=cpu.eflag.SF) printf("SF diff\n");
+  if(rof!=cpu.eflag.OF) printf("OF diff\n");
   if (diff) {
     nemu_state = NEMU_END;
   }
