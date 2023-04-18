@@ -29,7 +29,8 @@ make_EHelper(call);
 make_EHelper(ret);
 make_EHelper(jcc);
 make_EHelper(jmp);
-
+make_EHelper(jmp_rm);
+make_EHelper(call_rm);
 //logic
 make_EHelper(xor);
 make_EHelper(or);
