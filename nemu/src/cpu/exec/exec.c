@@ -239,7 +239,7 @@ void exec_wrapper(bool print_flag) {
   decoding.p = decoding.asm_buf;
   decoding.p += sprintf(decoding.p, "%8x:   ", cpu.eip);
 #endif
-
+  printf("begin ins cpu.eip:0x%08x\n",cpu.eip);
   decoding.seq_eip = cpu.eip;
   exec_real(&decoding.seq_eip);
 
@@ -256,9 +256,9 @@ void exec_wrapper(bool print_flag) {
 #ifdef DIFF_TEST
   uint32_t eip = cpu.eip;
 #endif
-  print_reg_info();
+  //print_reg_info();
   update_eip();
-  print_reg_info();
+  //print_reg_info();
 #ifdef DIFF_TEST
   void difftest_step(uint32_t);
   difftest_step(eip);
