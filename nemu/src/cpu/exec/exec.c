@@ -1,5 +1,6 @@
 #include "cpu/exec.h"
 #include "all-instr.h"
+#include "cpu/reg.h"
 #ifndef DIFF_TEST
 #define DIFF_TEST
 #endif
@@ -257,7 +258,7 @@ void exec_wrapper(bool print_flag) {
 #endif
 
   update_eip();
-
+  print_reg_info();
 #ifdef DIFF_TEST
   void difftest_step(uint32_t);
   difftest_step(eip);
