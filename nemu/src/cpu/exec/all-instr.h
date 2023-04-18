@@ -23,6 +23,7 @@ make_EHelper(leave);
 make_EHelper(call);
 make_EHelper(ret);
 make_EHelper(jcc);
+make_EHelper(jmp);
 
 //logic
 make_EHelper(xor);
