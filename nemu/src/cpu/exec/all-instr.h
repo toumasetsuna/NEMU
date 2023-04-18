@@ -10,7 +10,7 @@ make_EHelper(adc);
 make_EHelper(inc);
 make_EHelper(dec);
 make_EHelper(cmp);
-
+make_EHelper(imul);
 //data-mov
 make_EHelper(mov);
 make_EHelper(pop);
