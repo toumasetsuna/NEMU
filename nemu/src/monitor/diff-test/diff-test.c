@@ -176,11 +176,11 @@ void difftest_step(uint32_t eip) {
     diff=true;
   }
   if(r.esi!=cpu.edi) {
-    printf("esp wrong\n");
+    printf("esi diff\n");
     diff=true;
   }
   if(r.edi!=cpu.edi) {
-    printf("esp diff\n");
+    printf("edi diff\n");
     diff=true;
   }
   if(r.eip!=cpu.eip) {
