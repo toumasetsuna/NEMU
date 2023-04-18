@@ -2,6 +2,7 @@
 #include "cpu/exec.h"
 #include "cpu/reg.h"
 #include "cpu/rtl.h"
+#include <stdint.h>
 make_EHelper(mov) {
   operand_write(id_dest, &id_src->val);
   print_asm_template2(mov);
@@ -38,10 +39,16 @@ make_EHelper(leave) {
 
 make_EHelper(cltd) {
   if (decoding.is_operand_size_16) {
-    TODO();
+     rtl_lr_w(&t0, R_AX);
+  	 rtl_sext(&t0, &t0, 2);
+  	 rtl_sari(&t0, &t0, 16);
+  	 rtl_sr_w(R_DX, &t0);
   }
   else {
-    TODO();
+    rtl_lr_l(&t0, R_EAX);
+  	rtl_sari(&t0, &t0, 31);
+  	rtl_sari(&t0, &t0, 1);
+  	rtl_sr_l(R_EDX, &t0);
   }
 
   print_asm(decoding.is_operand_size_16 ? "cwtl" : "cltd");

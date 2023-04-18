@@ -20,7 +20,7 @@ make_EHelper(push);
 make_EHelper(lea);
 make_EHelper(movzx);
 make_EHelper(leave);
-
+make_EHelper(cltd);
 //control
 make_EHelper(call);
 make_EHelper(ret);
@@ -37,6 +37,7 @@ make_EHelper(sar);
 make_EHelper(shl);
 make_EHelper(shr);
 make_EHelper(not);
+
 //special
 make_EHelper(operand_size);
 make_EHelper(inv);
