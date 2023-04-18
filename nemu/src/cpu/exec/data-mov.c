@@ -1,6 +1,7 @@
 #include "cpu/decode.h"
 #include "cpu/exec.h"
-
+#include "cpu/reg.h"
+#include "cpu/rtl.h"
 make_EHelper(mov) {
   operand_write(id_dest, &id_src->val);
   print_asm_template2(mov);
@@ -31,8 +32,8 @@ make_EHelper(popa) {
 }
 
 make_EHelper(leave) {
-  TODO();
-
+  cpu.ebp=cpu.esp;
+  rtl_pop(&cpu.esp);
   print_asm("leave");
 }
 
