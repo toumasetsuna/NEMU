@@ -1,5 +1,6 @@
 #include "cpu/exec.h"
 #include "all-instr.h"
+#include "cpu/decode.h"
 #include "cpu/reg.h"
 #ifndef DIFF_TEST
 #define DIFF_TEST
@@ -243,6 +244,7 @@ void exec_wrapper(bool print_flag) {
   decoding.seq_eip = cpu.eip;
   exec_real(&decoding.seq_eip);
   printf("finish ins cpu.eip:0x%08x\n",cpu.eip);
+  printf("seq ins 0x%08x\n",decoding.seq_eip);
 #ifdef DEBUG
   int instr_len = decoding.seq_eip - cpu.eip;
   sprintf(decoding.p, "%*.s", 50 - (12 + 3 * instr_len), "");
