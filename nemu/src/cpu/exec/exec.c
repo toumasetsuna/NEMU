@@ -146,7 +146,7 @@ opcode_entry opcode_table [512] = {
   /* 0xec */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xf0 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0xf4 */	EMPTY, EMPTY, IDEXW(E, gp3, 1), IDEX(E, gp3),
-  /* 0xf8 */	EMPTY, EMPTY, EMPTY, EMPTY,
+  /* 0xf8 */	EMPTY, EMPTY, IDEX(test_I,test), EMPTY,
   /* 0xfc */	EMPTY, EMPTY, IDEXW(E, gp4, 1), IDEX(E, gp5),
 
   /*2 byte_opcode_table */
