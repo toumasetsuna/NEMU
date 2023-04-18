@@ -1,5 +1,6 @@
 #include "cpu/decode.h"
 #include "cpu/exec.h"
+#include "cpu/reg.h"
 
 make_EHelper(jmp) {
   // the target address is calculated at the decode stage
@@ -33,7 +34,7 @@ make_EHelper(call) {
 
 make_EHelper(ret) {
   rtl_pop(eip);
-  decoding.is_jmp=1;
+  print_reg_info();
   print_asm("ret");
 }
 
