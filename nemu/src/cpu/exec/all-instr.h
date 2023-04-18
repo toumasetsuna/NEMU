@@ -26,6 +26,8 @@ make_EHelper(and);
 make_EHelper(test);
 make_EHelper(setcc);
 make_EHelper(sar);
+make_EHelper(sal);
+make_EHelper(shr);
 //special
 make_EHelper(operand_size);
 make_EHelper(inv);
