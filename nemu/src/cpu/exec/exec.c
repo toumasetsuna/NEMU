@@ -242,7 +242,7 @@ void exec_wrapper(bool print_flag) {
   printf("begin ins cpu.eip:0x%08x\n",cpu.eip);
   decoding.seq_eip = cpu.eip;
   exec_real(&decoding.seq_eip);
-
+  printf("finish ins cpu.eip:0x%08x\n",cpu.eip);
 #ifdef DEBUG
   int instr_len = decoding.seq_eip - cpu.eip;
   sprintf(decoding.p, "%*.s", 50 - (12 + 3 * instr_len), "");
