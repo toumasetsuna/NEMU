@@ -186,9 +186,8 @@ make_DHelper(r) {
 }
 
 make_DHelper(E) {
-  printf("[E: hello]\n");
+  
   decode_op_rm(eip, id_dest, true, NULL, false);
-  printf("[E: hello2]\n");
 }
 
 make_DHelper(gp7_E) {
