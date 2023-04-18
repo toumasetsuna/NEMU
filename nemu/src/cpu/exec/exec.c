@@ -256,7 +256,7 @@ void exec_wrapper(bool print_flag) {
 #ifdef DIFF_TEST
   uint32_t eip = cpu.eip;
 #endif
-
+  print_reg_info();
   update_eip();
   print_reg_info();
 #ifdef DIFF_TEST
