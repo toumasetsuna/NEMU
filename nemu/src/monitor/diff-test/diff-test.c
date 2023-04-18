@@ -149,7 +149,6 @@ void difftest_step(uint32_t eip) {
 
   gdb_si();
   gdb_getregs(&r);
-
   // TODO: Check the registers state with QEMU.
   // Set `diff` as `true` if they are not the same.
   if(r.eax!=cpu.eax) {
