@@ -1,7 +1,6 @@
 #include "cpu/exec.h"
 
 make_EHelper(nop);
-
 //arith
 make_EHelper(sub);
 make_EHelper(sbb);
@@ -49,4 +48,8 @@ make_EHelper(not);
 make_EHelper(operand_size);
 make_EHelper(inv);
 make_EHelper(nemu_trap);
+//system
+make_EHelper(in);
+make_EHelper(out);
+make_EHelper(iret);
 

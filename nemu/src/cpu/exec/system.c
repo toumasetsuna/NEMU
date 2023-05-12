@@ -1,3 +1,4 @@
+#include "cpu/decode.h"
 #include "cpu/exec.h"
 
 void diff_test_skip_qemu();
@@ -36,8 +37,9 @@ make_EHelper(int) {
 }
 
 make_EHelper(iret) {
-  TODO();
-
+  rtl_pop(&decoding.jmp_eip);
+  cpu.esp += id_dest->val;
+  decoding.is_jmp = 1;
   print_asm("iret");
 }
 
@@ -45,8 +47,8 @@ uint32_t pio_read(ioaddr_t, int);
 void pio_write(ioaddr_t, int, uint32_t);
 
 make_EHelper(in) {
-  TODO();
-
+  id_dest->val=pio_read(id_src->val, id_dest->width);
+  operand_write(id_dest, &id_dest->val);
   print_asm_template2(in);
 
 #ifdef DIFF_TEST
@@ -55,7 +57,7 @@ make_EHelper(in) {
 }
 
 make_EHelper(out) {
-  TODO();
+  pio_write(id_dest->val, id_dest->width, id_src->val);
 
   print_asm_template2(out);
 
