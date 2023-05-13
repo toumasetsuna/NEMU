@@ -2,9 +2,7 @@
 #include "all-instr.h"
 #include "cpu/decode.h"
 #include "cpu/reg.h"
-#ifndef DIFF_TEST
-#define DIFF_TEST
-#endif
+
 
 typedef struct {
   DHelper decode;
