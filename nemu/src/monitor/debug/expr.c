@@ -172,6 +172,7 @@ uint32_t expr(char *e, bool *success) {
   stack.height=op_stack.height=num_stack.height=0;
   if (!make_token(e)) {
     *success = false;
+    printf("token not right\n");
     return 0;
   }
   printf("token right\n");
