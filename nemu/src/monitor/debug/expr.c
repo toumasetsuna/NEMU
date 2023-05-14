@@ -72,10 +72,10 @@ static bool make_token(char *e) {
   regmatch_t pmatch;
   nr_token = 0;
   printf("begin make tokens\n");
-  printf("%s\n",e);
   while (e[position] != '\0') {
     /* Try all rules one by one. */
     for (i = 0; i < NR_REGEX; i ++) {
+      printf("%d\n",i);
       if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
         printf("1 token\n");
         char *substr_start = e + position;
