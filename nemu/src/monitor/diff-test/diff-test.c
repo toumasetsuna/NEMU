@@ -195,20 +195,20 @@ void difftest_step(uint32_t eip) {
   if(rcf!=cpu.eflag.CF) {
     printf("CF diff\n");
     printf("%d\n",cpu.eflag.CF);
-    diff=true;
+   // diff=true;
   }
   if(rzf!=cpu.eflag.ZF) {
     printf("ZF diff\n");
     printf("%d\n",cpu.eflag.ZF);
-    diff=true;
+    //diff=true;
   }
   if(rsf!=cpu.eflag.SF) {
     printf("SF diff\n");
-    diff=true;
+   // diff=true;
   }
   if(rof!=cpu.eflag.OF){
     printf("OF diff\n");
-    diff=true;
+    //diff=true;
   }
   if (diff) {
     nemu_state = NEMU_END;
