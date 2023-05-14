@@ -123,6 +123,9 @@ static bool make_token(char *e) {
                 break;
               }
             }
+            if(strncmp(&e[position+1],"eip",3)==0){
+              tokens[nr_token].val=cpu.eip;
+            }
             nr_token++;
             break;
           default:
