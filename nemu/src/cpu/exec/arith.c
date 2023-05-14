@@ -76,7 +76,7 @@ make_EHelper(dec) {
   rtl_update_ZFSF(&t2, id_dest->width);
 
   rtl_sltu(&t0, &id_dest->val, &t2);
-  rtl_set_CF(&t0);
+  //rtl_set_CF(&t0);
 
   rtl_xori(&t0, &id_dest->val, 1);
   rtl_xor(&t1, &id_dest->val, &t2);
