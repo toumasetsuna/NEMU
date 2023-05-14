@@ -199,6 +199,7 @@ void difftest_step(uint32_t eip) {
   }
   if(rzf!=cpu.eflag.ZF) {
     printf("ZF diff\n");
+    printf("%d\n",cpu.eflag.ZF);
     diff=true;
   }
   if(rsf!=cpu.eflag.SF) {
