@@ -54,6 +54,7 @@ static int cmd_info(char* args){
   return 0;
 }
 static int cmd_p(char* args){
+  printf("%s",args);
   bool success=false;
   int ans=expr(args,&success);
   printf("%d\n",ans);
