@@ -140,7 +140,7 @@ static bool make_token(char *e) {
         }
         position += substr_len;
         break;
-      }
+      }else printf("not a token\n");
     }
 
     if (i == NR_REGEX) {
