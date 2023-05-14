@@ -106,6 +106,7 @@ static bool make_token(char *e) {
             tokens[nr_token++].level=2;
             break;
           case TK_INT:
+            printf("int!\n");
             tokens[nr_token].type=rules[i].token_type;
             if(e[position]==0)sscanf(&e[position],"%x",&tokens[nr_token++].val);
             else sscanf(&e[position],"%d",&tokens[nr_token++].val);
