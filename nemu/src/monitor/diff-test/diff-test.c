@@ -132,7 +132,7 @@ void init_qemu_reg() {
 void difftest_step(uint32_t eip) {
   union gdb_regs r;
   bool diff = false;
-
+  printf("eip: 0x%08x\n",eip);
   if (is_skip_nemu) {
     is_skip_nemu = false;
     return;
