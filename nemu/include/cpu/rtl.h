@@ -152,9 +152,9 @@ static inline void rtl_push(const rtlreg_t* src1) {
 }
 
 static inline void rtl_pop(rtlreg_t* dest) {
-  printf("cpu esp=0x%08x",cpu.esp);
+  //printf("cpu esp=0x%08x",cpu.esp);
   *dest =vaddr_read(cpu.esp, 4);
-  printf("ret addr=0x%08x",*dest);
+  //printf("ret addr=0x%08x",*dest);
   cpu.esp+=4;
   // esp <- esp + 4
   
