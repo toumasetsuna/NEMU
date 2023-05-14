@@ -47,7 +47,6 @@ make_EHelper(cltd) {
   else {
     rtl_lr_l(&t0, R_EAX);
   	rtl_sari(&t0, &t0, 31);
-  	rtl_sari(&t0, &t0, 1);
   	rtl_sr_l(R_EDX, &t0);
   }
 
