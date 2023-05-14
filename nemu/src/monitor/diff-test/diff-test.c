@@ -194,6 +194,7 @@ void difftest_step(uint32_t eip) {
   if(((r.eflags>>11)&0x1)==1) rof=1;
   if(rcf!=cpu.eflag.CF) {
     printf("CF diff\n");
+    printf("%d",cpu.eflag.CF);
     diff=true;
   }
   if(rzf!=cpu.eflag.ZF) {
