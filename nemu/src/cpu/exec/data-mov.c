@@ -56,14 +56,14 @@ make_EHelper(cltd) {
 
 make_EHelper(cwtl) {
   if (decoding.is_operand_size_16) {
-     rtl_lr_w(&t0, R_EAX);
+     rtl_lr_b(&t0, R_EAX);
      rtl_sext(&t0, &t0, 1);
      rtl_sr_w(R_AX,&t0);
   }
   else {
     rtl_lr_w(&t0, R_EAX);
      rtl_sext(&t0, &t0, 2);
-     rtl_sr_w(R_EAX,&t0);
+     rtl_sr_l(R_EAX,&t0);
   }
 
   print_asm(decoding.is_operand_size_16 ? "cbtw" : "cwtl");
