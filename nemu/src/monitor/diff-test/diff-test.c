@@ -153,6 +153,8 @@ void difftest_step(uint32_t eip) {
   // Set `diff` as `true` if they are not the same.
   if(r.eax!=cpu.eax) {
     printf("eax diff\n");
+    printf("my eax:0x%08x\n",cpu.eax);
+    printf("qemu eax:0x%08x\n",r.eax);
     diff=true;
   }
   if(r.ebp!=cpu.ebp) {
