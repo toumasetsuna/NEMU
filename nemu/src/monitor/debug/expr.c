@@ -81,8 +81,8 @@ static bool make_token(char *e) {
      //   printf("1 token\n");
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
-        Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
-            i, rules[i].regex, position, substr_len, substr_len, substr_start);
+      //  Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
+      //      i, rules[i].regex, position, substr_len, substr_len, substr_start);
 
         /* TODO: Now a new token is recognized with rules[i]. Add codes
          * to record the token in the array `tokens'. For certain types
@@ -180,7 +180,7 @@ uint32_t expr(char *e, bool *success) {
     //printf("token not right\n");
     return 0;
   }
-  printf("token right\n");
+ // printf("token right\n");
   bool if_unary=true;
   for(int i=0;i<nr_token;i++){
     if(tokens[i].type==TK_REG||tokens[i].type==TK_INT){
