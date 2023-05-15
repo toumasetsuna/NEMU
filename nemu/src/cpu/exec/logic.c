@@ -22,7 +22,7 @@ make_EHelper(and) {
 }
 
 make_EHelper(xor) {
-  //rtl_xor(&id_dest->val,&id_src->val,&id_dest->val);
+  rtl_xor(&id_dest->val,&id_src->val,&id_dest->val);
   operand_write(id_dest,&id_dest->val);
   rtl_update_ZFSF(&id_dest->val,id_dest->width);
   cpu.eflag.CF=0;
@@ -41,7 +41,7 @@ make_EHelper(or) {
 }
 
 make_EHelper(sar) {
-  rtl_sext(&id_dest->val,&id_dest->val,id_dest->width);
+  //rtl_sext(&id_dest->val,&id_dest->val,id_dest->width);
   rtl_sar(&t0,&id_dest->val,&id_src->val);
   operand_write(id_dest,&t0);
   rtl_update_ZFSF(&t0,id_dest->width);
