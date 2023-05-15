@@ -71,14 +71,14 @@ static bool make_token(char *e) {
   int i;
   regmatch_t pmatch;
   nr_token = 0;
-  printf("begin make tokens\n");
+ // printf("begin make tokens\n");
   while (e[position] != '\0') {
     /* Try all rules one by one. */
-    printf("%d\n",NR_REGEX);
+  //  printf("%d\n",NR_REGEX);
     for (i = 0; i < NR_REGEX; i ++) {
-      printf("%d\n",i);
+    //  printf("%d\n",i);
       if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
-        printf("1 token\n");
+     //   printf("1 token\n");
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
         Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
