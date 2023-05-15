@@ -109,7 +109,7 @@ static bool make_token(char *e) {
             break;
           case TK_INT:
             tokens[nr_token].type=rules[i].token_type;
-            if(e[position]==0)sscanf(&e[position],"%x",&tokens[nr_token++].val);
+            if(e[position]=='0')sscanf(&e[position],"%x",&tokens[nr_token++].val);
             else sscanf(&e[position],"%d",&tokens[nr_token++].val);
             break;
           case TK_REG:
