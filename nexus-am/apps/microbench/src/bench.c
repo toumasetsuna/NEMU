@@ -1,6 +1,7 @@
 #include <am.h>
 #include <benchmark.h>
 #include <limits.h>
+#include <stdio.h>
 
 Benchmark *current;
 Setting *setting;
@@ -147,7 +148,7 @@ uint32_t checksum(void *start, void *end) {
   const int32_t x = 16777619;
   int32_t hash = 2166136261u;
   for (uint8_t *p = (uint8_t*)start; p + 4 < (uint8_t*)end; p += 4) {
-    int32_t h1 = hash;
+    uint32_t h1 = hash;
     for (int i = 0; i < 4; i ++) {
       h1 = (h1 ^ p[i]) * x;
     }

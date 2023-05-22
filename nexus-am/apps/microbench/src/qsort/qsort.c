@@ -38,6 +38,6 @@ void bench_qsort_run() {
 }
 
 int bench_qsort_validate() {
-  for(int i=1;i<=N;i++) if(data[i]<data[i-1]) printf("wrong ans %d\n",i);
+  //for(int i=1;i<=N;i++) if(data[i]<data[i-1]) printf("wrong ans %d\n",i);
   return checksum(data, data + N) == setting->checksum;
 }
