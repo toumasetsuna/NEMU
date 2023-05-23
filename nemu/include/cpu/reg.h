@@ -32,9 +32,12 @@ typedef struct {
   vaddr_t eip;
   struct Eflag{
     unsigned int CF: 1;
+    unsigned int   : 5;
     unsigned int ZF: 1;
     unsigned int SF: 1;
+    unsigned int   : 1;
     unsigned int IF: 1;
+    unsigned int   : 1;
     unsigned int OF: 1;
   } eflag;
 } CPU_state;
