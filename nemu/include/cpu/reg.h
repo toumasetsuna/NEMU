@@ -73,5 +73,6 @@ static void print_reg_info(){
     printf("%s: 0x%08x\n\n",reg_name(j,1),reg_b(j));
   }
   printf("eip: 0x%08x",cpu.eip);    
+  printf("%u",cpu.eflag);
 }
 #endif
