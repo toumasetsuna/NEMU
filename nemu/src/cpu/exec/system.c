@@ -1,12 +1,18 @@
 #include "cpu/decode.h"
 #include "cpu/exec.h"
+#include "cpu/reg.h"
+#include "cpu/rtl.h"
 
 void diff_test_skip_qemu();
 void diff_test_skip_nemu();
 
 make_EHelper(lidt) {
-  TODO();
-
+  rtl_lm(&t0,&id_dest->addr,2);
+  rtl_addi(&t2, &id_dest->addr, 2);
+  if(id_dest->width==4) rtl_lm(&t1, &t2, 4);
+  if(id_dest->width==2) rtl_lm(&t1, &t2, 3);
+  cpu.idtr.base=t1;
+  cpu.idtr.limit=t0;
   print_asm_template1(lidt);
 }
 

@@ -2,6 +2,7 @@
 #define __REG_H__
 
 #include "common.h"
+#include <stdint.h>
 
 
 enum { R_EAX, R_ECX, R_EDX, R_EBX, R_ESP, R_EBP, R_ESI, R_EDI };
@@ -40,6 +41,10 @@ typedef struct {
     unsigned int   : 1;
     unsigned int OF: 1;
   } eflag;
+  struct IDTR{
+    uint16_t limit;
+    uint32_t base;
+  } idtr;
 } CPU_state;
 
 extern CPU_state cpu;
@@ -72,7 +77,8 @@ static void print_reg_info(){
     printf("%s: 0x%08x\t",reg_name(j,2),reg_w(j));
     printf("%s: 0x%08x\n\n",reg_name(j,1),reg_b(j));
   }
-  printf("eip: 0x%08x",cpu.eip);    
-  printf("%u",cpu.eflag);
+  printf("eip: 0x%08x\n",cpu.eip);    
+  printf("eflag: 0x%08x\n",cpu.eflag);
+
 }
 #endif
