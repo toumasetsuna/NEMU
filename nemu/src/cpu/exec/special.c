@@ -44,3 +44,15 @@ make_EHelper(nemu_trap) {
   diff_test_skip_qemu();
 #endif
 }
+make_EHelper(rol) {
+  uint32_t cnt = id_src->val;
+  uint32_t i = 0;
+  while(i++ < cnt) {
+    rtl_msb(&t1, &id_dest->val, id_dest->width);
+    rtl_shli(&id_dest->val, &id_dest->val, 1);
+    rtl_xor(&id_dest->val, &id_dest->val, &t1);
+  }
+  rtl_set_CF(&t1);
+  operand_write(id_dest, &id_dest->val);
+  print_asm_template2("rol");
+}
