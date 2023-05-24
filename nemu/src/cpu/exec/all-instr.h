@@ -26,6 +26,7 @@ make_EHelper(movsx);
 make_EHelper(leave);
 make_EHelper(cltd);
 make_EHelper(cwtl);
+make_EHelper(pusha);
 //control
 make_EHelper(call);
 make_EHelper(ret);
