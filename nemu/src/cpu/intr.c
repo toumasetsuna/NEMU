@@ -17,7 +17,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   rtl_lm(&t1,&t0,2);
   t0+=6;
   rtl_lm(&t2, &t0, 2);
-  t2=(t2<<16)+t1;
+  t2=(t1<<16)+t2;
   decoding.jmp_eip = t2;
   decoding.is_jmp=true;
 }
