@@ -72,7 +72,7 @@ static inline const char* reg_name(int index, int width) {
     default: assert(0);
   }
 }
-static void print_reg_info(){
+void print_reg_info(){
   for(int j=0;j<8;j++){
     printf("%s: 0x%08x\t",reg_name(j,4),reg_l(j));
     printf("%s: 0x%08x\t",reg_name(j,2),reg_w(j));
@@ -80,6 +80,7 @@ static void print_reg_info(){
   }
   printf("eip: 0x%08x\n",cpu.eip);    
   printf("eflag: 0x%08x\n",cpu.eflag);
+  printf("idtr: 0x%08x\n",cpu.idtr.base);
 
 }
 #endif

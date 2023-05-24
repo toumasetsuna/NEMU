@@ -14,6 +14,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   rtl_push(&cpu.CS);
   rtl_push(&cpu.eip);
   rtl_mv(&t0,&cpu.idtr.base);
+  
   rtl_lm(&t1,&t0,2);
   t0+=6;
   rtl_lm(&t2, &t0, 2);
