@@ -2,11 +2,13 @@
 #include "cpu/exec.h"
 #include "cpu/reg.h"
 #include "cpu/rtl.h"
+#include <stdio.h>
 extern void raise_intr(uint8_t NO, vaddr_t ret_addr);
 void diff_test_skip_qemu();
 void diff_test_skip_nemu();
 
 make_EHelper(lidt) {
+  printf("hello lidt\n");
   rtl_lm(&t0,&id_dest->addr,2);
   rtl_addi(&t2, &id_dest->addr, 2);
   if(id_dest->width==4) rtl_lm(&t1, &t2, 4);
