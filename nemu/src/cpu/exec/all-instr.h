@@ -55,6 +55,6 @@ make_EHelper(lidt);
 make_EHelper(in);
 make_EHelper(out);
 make_EHelper(iret);
-//intr
-make_EHelper(raise_intr);
+make_EHelper(int);
+
 
