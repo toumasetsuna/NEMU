@@ -47,10 +47,13 @@ make_EHelper(int) {
 
 make_EHelper(iret) {
   rtl_pop(&decoding.jmp_eip);
-  cpu.esp += id_dest->val;
-  decoding.is_jmp = 1;
+  decoding.is_jmp=1;
+  rtl_pop(&cpu.CS);
+  rtl_pop(&cpu.eflag);
+
   print_asm("iret");
 }
+
 
 uint32_t pio_read(ioaddr_t, int);
 void pio_write(ioaddr_t, int, uint32_t);
