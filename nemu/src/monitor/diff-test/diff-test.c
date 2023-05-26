@@ -215,6 +215,7 @@ void difftest_step(uint32_t eip) {
   }
   if (diff) {
     printf("eip: 0x%08x\n",eip);
+    printf("eip qemu: 0x%08x\n",r.eip);
     nemu_state = NEMU_END;
   }
 }
