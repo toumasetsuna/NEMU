@@ -5,6 +5,7 @@ static _RegSet* do_event(_Event e, _RegSet* r) {
   switch (e.event) {
     case _EVENT_SYSCALL:
       do_syscall(r);
+      printf("System Call\n");
       break;
     default: panic("Unhandled event ID = %d", e.event);
   }

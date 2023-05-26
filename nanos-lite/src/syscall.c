@@ -11,15 +11,19 @@ _RegSet* do_syscall(_RegSet *r) {
   switch (a[0]) {
   case SYS_none:
     SYSCALL_ARG1(r) = 1;
+    printf("SYS_none\n");
     break;
   case SYS_exit:
+    printf("SYS_exit\n");
     _halt(SYSCALL_ARG2(r));
     break;
   case SYS_write:
+    printf("SYS_write\n");
     if(a[1]==0||a[1]==1){
       char* addr=(char*) a[2];
       for(int i=0;i<a[3];i++) _putc(*(addr+i));
     }
+    break;
   default: panic("Unhandled syscall ID = %d", a[0]);
   }
 
