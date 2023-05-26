@@ -15,9 +15,9 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   rtl_push(&ret_addr);
   rtl_mv(&t0,&cpu.idtr.base);
   t0+=8*NO;
-  rtl_lm(&t1,&t0,2);
-  t0+=6;
-  rtl_lm(&t2, &t0, 2);
+  rtl_lm(&t1,&t0,4);
+  t0+=4;
+  rtl_lm(&t2, &t0, 4);
   t2=(t2<<16)+t1;
   printf("t2:0x%x\n",t2);
   decoding.jmp_eip = t2;
