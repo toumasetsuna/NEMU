@@ -22,6 +22,7 @@ _RegSet* do_syscall(_RegSet *r) {
     if(a[1]==0||a[1]==1){
       char* addr=(char*) a[2];
       for(int i=0;i<a[3];i++) _putc(*(addr+i));
+      SYSCALL_ARG1(r) = a[3];
     }
     break;
   default: panic("Unhandled syscall ID = %d", a[0]);
