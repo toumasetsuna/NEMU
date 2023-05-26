@@ -16,11 +16,11 @@ _RegSet* do_syscall(_RegSet *r) {
   case SYS_exit:
     
     printf("SYS_exit\n");
-    printf("%d\n",a[1]);
+    //printf("%d\n",a[1]);
     _halt(a[1]);
     break;
   case SYS_write:
-    printf("SYS_write\n");
+    //printf("SYS_write\n");
     if(a[1]==1||a[1]==2){
       char* addr=(char*) a[2];
       for(int i=0;i<a[3];i++) _putc(*(addr+i));
