@@ -1,3 +1,4 @@
+#include "common.h"
 #include "cpu/decode.h"
 #include "cpu/exec.h"
 #include "cpu/reg.h"
@@ -15,14 +16,18 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   rtl_push(&ret_addr);
   rtl_mv(&t0,&cpu.idtr.base);
   t0+=8*NO;
-  rtl_lm(&t1,&t0,4);
-  t0+=4;
-  rtl_lm(&t2, &t0, 4);
-  t2=(t2<<16)+t1;
+ /* rtl_lm(&t1,&t0,2);
+  t0+=6;
+  rtl_lm(&t2, &t0, 2);
+  t2=(t2<<16)+t1;*/
+  GateDesc g;
+  ((vaddr_t*) &g)[0]=vaddr_read(t0,4);
+  ((vaddr_t*) &g)[0]=vaddr_read(t0+4,4);
+  t2=g.offset_15_0+(g.offset_31_16<<16);
   printf("t2:0x%x\n",t2);
   decoding.jmp_eip = t2;
   decoding.is_jmp=true;
-  print_reg_info();
+  
 }
 
 void dev_raise_intr() {
