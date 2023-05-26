@@ -133,7 +133,7 @@ void difftest_step(uint32_t eip) {
   //if(!(eip==0x101bea||eip==0x101be7)) return;
   union gdb_regs r;
   bool diff = false;
-  printf("eip: 0x%08x\n",eip);
+  //printf("eip: 0x%08x\n",eip);
   if (is_skip_nemu) {
     is_skip_nemu = false;
     return;
@@ -186,7 +186,7 @@ void difftest_step(uint32_t eip) {
     printf("edi diff\n");
     diff=true;
   }
-  if(r.eip!=eip) {
+  if(r.eip!=cpu.eip) {
     printf("eip diff\n");
     diff=true;
   }
@@ -214,6 +214,8 @@ void difftest_step(uint32_t eip) {
     //diff=true;
   }
   if (diff) {
+    printf("eip: 0x%08x\n",cpu.eip);
+    printf("eip qemu: 0x%08x\n",r.eip);
     nemu_state = NEMU_END;
   }
 }
