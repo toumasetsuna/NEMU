@@ -8,7 +8,7 @@ void diff_test_skip_qemu();
 void diff_test_skip_nemu();
 
 make_EHelper(lidt) {
-  printf("hello lidt\n");
+  //printf("hello lidt\n");
   rtl_lm(&t0,&id_dest->addr,2);
   rtl_addi(&t2, &id_dest->addr, 2);
   if(id_dest->width==4) rtl_lm(&t1, &t2, 4);
