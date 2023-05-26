@@ -213,8 +213,8 @@ void difftest_step(uint32_t eip) {
     printf("OF diff\n");
     //diff=true;
   }
-  printf("eip qemu: 0x%08x\n",r.eip);
-  printf("eip: 0x%08x\n",cpu.eip);
+ // printf("eip qemu: 0x%08x\n",r.eip);
+ // printf("eip: 0x%08x\n",cpu.eip);
   if (diff) {
     //
     //printf("eip qemu: 0x%08x\n",r.eip);
