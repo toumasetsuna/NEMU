@@ -21,7 +21,7 @@ _RegSet* do_syscall(_RegSet *r) {
     break;
   case SYS_write:
     printf("SYS_write\n");
-    if(a[1]==0||a[1]==1){
+    if(a[1]==1||a[1]==2){
       char* addr=(char*) a[2];
       for(int i=0;i<a[3];i++) _putc(*(addr+i));
       SYSCALL_ARG1(r) = a[3];
