@@ -5,6 +5,9 @@
 #include "memory.h"
 #include <bits/stdint-uintn.h>
 #include <sys/types.h>
+extern off_t fs_1seek(int fd, off_t offset, int whence);
+extern ssize_t fs_read(int fd, void *buf, size_t len);
+extern ssize_t fs_write(int fd, void *buf, size_t len);
 _RegSet* do_syscall(_RegSet *r) {
   uintptr_t a[4];
   a[0] = SYSCALL_ARG1(r);
@@ -30,11 +33,19 @@ _RegSet* do_syscall(_RegSet *r) {
       for(int i=0;i<a[3];i++) _putc(*(addr+i));
       SYSCALL_ARG1(r) = a[3];
     }
+    else{
+       fs_write(a[1],(void*)a[2],a[3]);
+    }
     break;
   case SYS_brk:
     SYSCALL_ARG1(r) = 0;
     break;
-
+  case SYS_lseek:
+    fs_1seek(a[1],a[2],a[3]);
+    break;
+  case SYS_read:
+    fs_read(a[1],(void*)a[2],a[3]);
+    break;
   default: panic("Unhandled syscall ID = %d", a[0]);
   }
 
