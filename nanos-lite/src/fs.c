@@ -68,6 +68,7 @@ int fs_close(int fd){
   return 0;
 }
 ssize_t fs_file_sz(int fd){
+  printf("%d\n",file_table[fd].size);
   return file_table[fd].size;
 }
 
