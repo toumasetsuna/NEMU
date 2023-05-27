@@ -56,6 +56,7 @@ ssize_t fs_write(int fd, const void *buf, size_t len){
   return len;
 }
 off_t fs_1seek(int fd, off_t offset, int whence){
+  Log("fs_1seek %d",fd);
   assert((fd< NR_FILES));
   if(whence==SEEK_SET) file_table[fd].open_offset=offset;
   if(whence==SEEK_CUR) file_table[fd].open_offset+=offset;
