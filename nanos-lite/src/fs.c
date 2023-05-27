@@ -34,9 +34,9 @@ int fs_open(const char *pathname, int flags, int mode){
     }
     assert(0);
     panic("file not found");
-    return 0;
+    return -1;
 }
-int min(ssize_t x,ssize_t y){
+ssize_t min(ssize_t x,ssize_t y){
   return x<y?x:y;
 }
 ssize_t fs_read(int fd, void *buf, size_t len){
