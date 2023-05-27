@@ -32,6 +32,7 @@ int fs_open(const char *pathname, int flags, int mode){
       printf("file %d found\n",i);
       return i;
     }
+    assert(0);
     panic("file not found");
     return 0;
 }
