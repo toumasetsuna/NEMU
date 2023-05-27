@@ -39,9 +39,9 @@ int min(ssize_t x,ssize_t y){
   return x<y?x:y;
 }
 ssize_t fs_read(int fd, void *buf, size_t len){
-    printf("len0:%d\n",len);
+    //printf("len0:%d\n",len);
     len=min(file_table[fd].size-file_table[fd].open_offset,len);
-    printf("len1:%d\n",len);
+    //printf("len1:%d\n",len);
     ramdisk_read(buf,file_table[fd].open_offset+file_table[fd].disk_offset,len);
     file_table[fd].open_offset+=len;
     return len;
