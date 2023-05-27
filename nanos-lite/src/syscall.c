@@ -9,6 +9,7 @@ extern off_t fs_1seek(int fd, off_t offset, int whence);
 extern ssize_t fs_read(int fd, void *buf, size_t len);
 extern ssize_t fs_write(int fd, void *buf, size_t len);\
 extern int fs_open(const char *pathname, int flags, int mode);
+int fs_close(int fd);
 _RegSet* do_syscall(_RegSet *r) {
   uintptr_t a[4];
   a[0] = SYSCALL_ARG1(r);
@@ -28,7 +29,7 @@ _RegSet* do_syscall(_RegSet *r) {
     break;
   case SYS_write:
     //printf("SYS_write\n");
-    Log("print %d chars\n",a[3]);
+    //Log("print %d chars\n",a[3]);
     if(a[1]==1||a[1]==2){
       char* addr=(char*) a[2];
       for(int i=0;i<a[3];i++) _putc(*(addr+i));
@@ -50,6 +51,8 @@ _RegSet* do_syscall(_RegSet *r) {
   case SYS_open:
     fs_open((const char*)a[1],a[2],a[3]);
     break;
+  case SYS_close:
+    fs_close(a[1]);
   default: panic("Unhandled syscall ID = %d", a[0]);
   }
 
