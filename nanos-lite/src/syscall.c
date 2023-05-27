@@ -24,6 +24,7 @@ _RegSet* do_syscall(_RegSet *r) {
     break;
   case SYS_write:
     //printf("SYS_write\n");
+    Log("print %d chars\n",a[3]);
     if(a[1]==1||a[1]==2){
       char* addr=(char*) a[2];
       for(int i=0;i<a[3];i++) _putc(*(addr+i));

@@ -5,7 +5,6 @@
 #include <assert.h>
 #include <time.h>
 #include "syscall.h"
-
 // TODO: discuss with syscall interface
 #ifndef __ISA_NATIVE__
 
@@ -26,6 +25,7 @@ int _open(const char *path, int flags, mode_t mode) {
 }
 
 int _write(int fd, void *buf, size_t count){
+  
   _syscall_(SYS_write,fd,buf,count);
 }
 
