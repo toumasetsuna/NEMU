@@ -7,7 +7,7 @@
 #include "syscall.h"
 // TODO: discuss with syscall interface
 #ifndef __ISA_NATIVE__
-
+extern char _end;
 // FIXME: this is temporary
 
 int _syscall_(int type, uintptr_t a0, uintptr_t a1, uintptr_t a2){
@@ -30,7 +30,12 @@ int _write(int fd, void *buf, size_t count){
 }
 
 void *_sbrk(intptr_t increment){
-  return (void*)_syscall_(SYS_brk,increment,0,0);
+    
+    static char* pg_break= &_end;
+    char* old=pg_break;
+    pg_break+=increment;
+    _syscall_(SYS_brk, pg_break, 0, 0);
+  return (void*) old;
 }
 
 int _read(int fd, void *buf, size_t count) {
