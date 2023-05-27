@@ -1,7 +1,10 @@
 #include "am.h"
+#include "arch.h"
 #include "common.h"
 #include "syscall.h"
 #include "memory.h"
+#include <bits/stdint-uintn.h>
+#include <sys/types.h>
 _RegSet* do_syscall(_RegSet *r) {
   uintptr_t a[4];
   a[0] = SYSCALL_ARG1(r);
@@ -27,6 +30,19 @@ _RegSet* do_syscall(_RegSet *r) {
       SYSCALL_ARG1(r) = a[3];
     }
     break;
+  case SYS_brk:
+    while(0);
+    static bool if_first=true;
+    uint32_t pg_break=0;
+    if(if_first){
+      pg_break = *((uint32_t*)_heap.end);
+      if_first=false;
+    }else{
+      pg_break+=a[1];
+    }
+    SYSCALL_ARG1(r)=0;
+    break;
+
   default: panic("Unhandled syscall ID = %d", a[0]);
   }
 
