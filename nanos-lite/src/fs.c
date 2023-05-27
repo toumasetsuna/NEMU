@@ -40,6 +40,7 @@ int min(ssize_t x,ssize_t y){
   return x<y?x:y;
 }
 ssize_t fs_read(int fd, void *buf, size_t len){
+  assert((fd< NR_FILES));
     //printf("len0:%d\n",len);
     len=min(file_table[fd].size-file_table[fd].open_offset,len);
     //printf("len1:%d\n",len);
@@ -49,15 +50,18 @@ ssize_t fs_read(int fd, void *buf, size_t len){
 }
 
 ssize_t fs_write(int fd, const void *buf, size_t len){
+  assert((fd< NR_FILES));
    len=min(file_table[fd].size-(file_table[fd].open_offset+file_table[fd].disk_offset),len);
   ramdisk_write(buf,file_table[fd].open_offset+file_table[fd].disk_offset,len);
   file_table[fd].open_offset+=len;  
   return len;
 }
 off_t fs_1seek(int fd, off_t offset, int whence){
+  assert((fd< NR_FILES));
   if(whence==SEEK_SET) file_table[fd].open_offset=offset;
   if(whence==SEEK_CUR) file_table[fd].open_offset+=offset;
   if(whence==SEEK_END) file_table[fd].open_offset=offset+file_table[fd].size;
+  
   return file_table[fd].open_offset;
 }
 
