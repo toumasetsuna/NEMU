@@ -9,6 +9,7 @@ extern off_t fs_1seek(int fd, off_t offset, int whence);
 extern ssize_t fs_read(int fd, void *buf, size_t len);
 extern ssize_t fs_write(int fd, void *buf, size_t len);\
 extern int fs_open(const char *pathname, int flags, int mode);
+
 int fs_close(int fd);
 _RegSet* do_syscall(_RegSet *r) {
   uintptr_t a[4];
@@ -30,14 +31,7 @@ _RegSet* do_syscall(_RegSet *r) {
   case SYS_write:
     //printf("SYS_write\n");
     //Log("print %d chars\n",a[3]);
-    if(a[1]==1||a[1]==2){
-      char* addr=(char*) a[2];
-      for(int i=0;i<a[3];i++) _putc(*(addr+i));
-      SYSCALL_ARG1(r) = a[3];
-    }
-    else{
-       SYSCALL_ARG1(r) =fs_write(a[1],(void*)a[2],a[3]);
-    }
+    SYSCALL_ARG1(r) =fs_write(a[1],(void*)a[2],a[3]);
     break;
   case SYS_brk:
     SYSCALL_ARG1(r) = 0;

@@ -9,7 +9,6 @@
 extern char _heap_start;
 extern char _heap_end;
 extern int main();
-
 _Area _heap = {
   .start = &_heap_start,
   .end = &_heap_end,

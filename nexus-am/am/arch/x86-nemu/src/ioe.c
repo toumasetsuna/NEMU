@@ -1,4 +1,5 @@
 #include <am.h>
+#include <readline/readline.h>
 #include <x86.h>
 
 #define RTC_PORT 0x48   // Note that this is not standard
@@ -20,8 +21,10 @@ _Screen _screen = {
   .width  = 400,
   .height = 300,
 };
-
-extern void* memcpy(void *, const void *, int);
+void  get_screen_size(int *x,int *y){
+  *x=_screen.width;
+  *y=_screen.height;
+}
 static inline int min(int x, int y) {
   return (x < y) ? x : y;
 }
