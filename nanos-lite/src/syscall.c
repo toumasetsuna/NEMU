@@ -43,16 +43,18 @@ _RegSet* do_syscall(_RegSet *r) {
     SYSCALL_ARG1(r) = 0;
     break;
   case SYS_lseek:
-    fs_1seek(a[1],a[2],a[3]);
+    SYSCALL_ARG1(r)=fs_1seek(a[1],a[2],a[3]);
+
     break;
   case SYS_read:
-    fs_read(a[1],(void*)a[2],a[3]);
+    SYSCALL_ARG1(r)=fs_read(a[1],(void*)a[2],a[3]);
     break;
   case SYS_open:
-    fs_open((const char*)a[1],a[2],a[3]);
+    SYSCALL_ARG1(r)=fs_open((const char*)a[1],a[2],a[3]);
     break;
   case SYS_close:
-    fs_close(a[1]);
+    SYSCALL_ARG1(r)=fs_close(a[1]);
+    break;
   default: panic("Unhandled syscall ID = %d", a[0]);
   }
 
