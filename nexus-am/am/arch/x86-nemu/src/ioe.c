@@ -39,7 +39,9 @@ void _draw_rect(const uint32_t *pixels, int x, int y, int w, int h) {
   }
 
 }
-
+void _draw_fb(off_t offset,const char* buf, size_t len){
+  memcpy(fb+(offset/4),buf,len);
+}
 void _draw_sync() {
 }
 

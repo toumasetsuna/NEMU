@@ -28,6 +28,7 @@ static Finfo file_table[] __attribute__((used)) = {
 extern void ramdisk_read(void *buf, off_t offset, size_t len);
 extern void ramdisk_write(const void *buf, off_t offset, size_t len);
 extern void dispinfo_read(void *buf, off_t offset, size_t len);
+extern size_t events_read(void *buf, size_t len);
 int fs_open(const char *pathname, int flags, int mode){
     for(int i=3;i<NR_FILES;i++)
     if(strcmp(file_table[i].name,pathname)==0) {
@@ -43,10 +44,17 @@ ssize_t min(ssize_t x,ssize_t y){
 ssize_t fs_read(int fd, void *buf, size_t len){
   assert((fd< NR_FILES));
     //printf("len0:%d\n",len);
-    if(fd==FD_DISPINFO){
-      dispinfo_read(buf, file_table[FD_DISPINFO].open_offset, len);
+    
+    if(fd==FD_EVENTS){
+      //Log("event\n");
+      return events_read(buf,len);
     }
     len=min(file_table[fd].size-file_table[fd].open_offset,len);
+    if(fd==FD_DISPINFO){
+      dispinfo_read(buf, file_table[FD_DISPINFO].open_offset, len);
+      file_table[FD_DISPINFO].open_offset+=len;
+      return len;
+    }
     //printf("len1:%d\n",len);
     ramdisk_read(buf,file_table[fd].open_offset+file_table[fd].disk_offset,len);
     file_table[fd].open_offset+=len;
@@ -59,7 +67,8 @@ ssize_t fs_write(int fd, const void *buf, size_t len){
       for(int i=0;i<len;i++) _putc(*(addr+i));
       return len;
   }else if(fd==3){
-    fb_write(buf,file_table[FD_FB].open_offset,len);
+    fb_write(buf,file_table[fd].open_offset,len);
+    file_table[fd].open_offset+=len;
     return len;
   }else{      
     assert((fd< NR_FILES));
@@ -71,12 +80,10 @@ ssize_t fs_write(int fd, const void *buf, size_t len){
  
 }
 off_t fs_1seek(int fd, off_t offset, int whence){
-  
   assert((fd< NR_FILES));
   if(whence==SEEK_SET) file_table[fd].open_offset=offset;
   if(whence==SEEK_CUR) file_table[fd].open_offset+=offset;
   if(whence==SEEK_END) file_table[fd].open_offset=offset+file_table[fd].size;
-  
   return file_table[fd].open_offset;
 }
 
@@ -84,7 +91,7 @@ int fs_close(int fd){
   return 0;
 }
 ssize_t fs_file_sz(int fd){
-  printf("%d\n",file_table[fd].size);
+  //printf("%d\n",file_table[fd].size);
   return file_table[fd].size;
 }
 

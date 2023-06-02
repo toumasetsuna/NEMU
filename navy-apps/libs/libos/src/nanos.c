@@ -30,12 +30,12 @@ int _write(int fd, void *buf, size_t count){
 }
 
 void *_sbrk(intptr_t increment){
-    
-    static char* pg_break= &_end;
-    char* old=pg_break;
-    pg_break+=increment;
-    _syscall_(SYS_brk, pg_break, 0, 0);
-  return (void*) old;
+  static char* pg_break= &_end;
+  char* old=pg_break;
+  pg_break+=increment;
+  if(_syscall_(SYS_brk, pg_break, 0, 0)==0) return (void*) old;
+  pg_break=old;
+  return -1;
 }
 
 int _read(int fd, void *buf, size_t count) {

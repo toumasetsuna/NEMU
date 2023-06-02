@@ -11,7 +11,10 @@ int main() {
   NDL_OpenDisplay(bmp->w, bmp->h);
   printf("hello 2\n");
   NDL_DrawRect(bmp->pixels, 0, 0, bmp->w, bmp->h);
+  printf("hello 3\n");
   NDL_Render();
+  printf("hello r\n");
+  printf("width:%d height:%d\n",bmp->w,bmp->h);
   NDL_CloseDisplay();
   while (1);
   return 0;
