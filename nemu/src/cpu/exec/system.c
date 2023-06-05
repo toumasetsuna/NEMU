@@ -19,15 +19,18 @@ make_EHelper(lidt) {
 }
 
 make_EHelper(mov_r2cr) {
-  TODO();
-
+  //cpu.cr0.val=id_src->val;
+  if(id_dest->reg==0) rtl_mv(&cpu.cr0.val,&id_src->val);
+  if(id_dest->reg==3) rtl_mv(&cpu.cr3.val,&id_src->val);
   print_asm("movl %%%s,%%cr%d", reg_name(id_src->reg, 4), id_dest->reg);
+  Log("r2cr:%d",id_dest->reg);
 }
 
 make_EHelper(mov_cr2r) {
-  TODO();
-
+  if(id_src->reg==0) rtl_mv(&id_dest->val,&cpu.cr0.val);
+  if(id_src->reg==3) rtl_mv(&id_dest->val,&cpu.cr3.val);
   print_asm("movl %%cr%d,%%%s", id_src->reg, reg_name(id_dest->reg, 4));
+  Log("cr2r:%d",id_src->reg);
 
 #ifdef DIFF_TEST
   diff_test_skip_qemu();

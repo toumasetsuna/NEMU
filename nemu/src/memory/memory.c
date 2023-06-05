@@ -9,7 +9,18 @@
     })
 
 uint8_t pmem[PMEM_SIZE];
-
+paddr_t page_translate(vaddr_t addr){
+  if(~cpu.cr0.val&0x80000000)
+    return addr;
+  uint32_t t0=addr>>22;
+  uint32_t t1=(addr<<10)>>22;
+  uint32_t t2=(addr<<20)>>20;
+  uint32_t pde=paddr_read(cpu.cr3.val+4*t0,4);
+  if(!(pde&1)) Log("invalid vaddr: 0x%0x8",addr);
+  uint32_t pte=paddr_read(pde+4*t1, 4);
+  if(!(pde&1)) Log("invalid vaddr: 0x%0x8",addr);
+  return pte+t2;
+}
 /* Memory accessing interfaces */
 
 uint32_t paddr_read(paddr_t addr, int len) {
@@ -23,9 +34,15 @@ void paddr_write(paddr_t addr, int len, uint32_t data) {
 }
 
 uint32_t vaddr_read(vaddr_t addr, int len) {
-  return paddr_read(addr, len);
+  paddr_t addr0=page_translate(addr);
+  paddr_t addr1=page_translate(addr+len-1);
+  assert(addr1-addr0==len-1);
+  return paddr_read(addr0, len);
 }
 
 void vaddr_write(vaddr_t addr, int len, uint32_t data) {
-  paddr_write(addr, len, data);
+  paddr_t addr0=page_translate(addr);
+  paddr_t addr1=page_translate(addr+len-1);
+  assert(addr1-addr0==len-1);
+  paddr_write(addr0, len, data);
 }
