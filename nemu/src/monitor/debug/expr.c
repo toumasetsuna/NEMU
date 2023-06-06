@@ -258,6 +258,6 @@ uint32_t expr(char *e, bool *success) {
   Token t=top(&num_stack);
   pop(&num_stack);
   if(num_stack.height==0)*success=true;
-  printf("%d\n",t.val);
+  //printf("%d\n",t.val);
   return t.val;
 }
