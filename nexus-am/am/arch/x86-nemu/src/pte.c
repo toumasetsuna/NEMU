@@ -77,11 +77,11 @@ void _map(_Protect *p, void *va, void *pa) {
   if(!(cr3[t0]&1)){
     PTE* uptabs= (PTE*)(palloc_f());
     cr3[t0]=(uint32_t)uptabs;
-    if(!(cr3[t0]&1)) cr3[t0]=cr3[t0]&1;
+    if(!(cr3[t0]&PTE_P)) cr3[t0]=cr3[t0]|PTE_P;
   }
   cr3=(uint32_t*)(cr3[t0]&~0xfff);
   cr3[t1]=u1;
-  if(!(cr3[t1]&1)) cr3[t1]=cr3[t1]&1;
+  if(!(cr3[t1]&PTE_P)) cr3[t1]=cr3[t1]|PTE_P;
 }
 
 void _unmap(_Protect *p, void *va) {
