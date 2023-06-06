@@ -22,8 +22,8 @@ paddr_t page_translate(vaddr_t addr){
   if(!(pte&1)) Log("invalid vaddr: 0x%08x",addr);
   assert(pte&1);
   uint32_t ans=(pte&~0xfff)+t2;
-  Log("vaddr:0x%08x",addr);
-  Log("paddr:0x%08x",ans); 
+  //Log("vaddr:0x%08x",addr);
+  //Log("paddr:0x%08x",ans); 
   //paddr_t page_translate(vaddr_t vaddr) {
 
 /*if(~cpu.cr0.val & 0x80000000)
