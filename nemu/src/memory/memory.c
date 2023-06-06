@@ -16,14 +16,14 @@ paddr_t page_translate(vaddr_t addr){
   uint32_t t1=(addr<<10)>>22;
   uint32_t t2=(addr<<20)>>20;
   uint32_t pde=paddr_read(cpu.cr3.val&~0xfff+4*t0,4);
-  if(!(pde&1)) Log("invalid vaddr: 0x%0x8",addr);
+  if(!(pde&1)) Log("invalid vaddr: 0x%08x",addr);
   assert(pde&1);
   uint32_t pte=paddr_read(pde&~0xfff+4*t1, 4);
-  if(!(pte&1)) Log("invalid vaddr: 0x%0x8",addr);
+  if(!(pte&1)) Log("invalid vaddr: 0x%08x",addr);
   assert(pte&1);
   uint32_t ans=pte&~0xfff+t2;
-  Log("vaddr:0x%0x8",addr);
-  Log("paddr:0x%0x8",ans); 
+  Log("vaddr:0x%08x",addr);
+  Log("paddr:0x%08x",ans); 
   //assert(addr==ans);
   return ans;
 }
