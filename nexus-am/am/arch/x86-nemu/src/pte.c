@@ -74,7 +74,7 @@ void _map(_Protect *p, void *va, void *pa) {
   //uint32_t t2=(vaddr<<20)>>20;
   //uint32_t u0=paddr>>22;
   uint32_t u1=(paddr>>12)<<12;
-  if(!(cr3[t0]&1)){
+  if(!(cr3[t0]&PTE_P)){
     PTE* uptabs= (PTE*)(palloc_f());
     cr3[t0]=(uint32_t)uptabs;
     if(!(cr3[t0]&PTE_P)) cr3[t0]=cr3[t0]|PTE_P;
