@@ -41,7 +41,8 @@ void _pte_init(void* (*palloc)(), void (*pfree)(void*)) {
       }
     }
   }
-
+  
+  //printf("kpdirs: 0x%08x\n",kpdirs);
   set_cr3(kpdirs);
   set_cr0(get_cr0() | CR0_PG);
 }

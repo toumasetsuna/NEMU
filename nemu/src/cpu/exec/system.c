@@ -24,6 +24,8 @@ make_EHelper(mov_r2cr) {
   if(id_dest->reg==3) rtl_mv(&cpu.cr3.val,&id_src->val);
   print_asm("movl %%%s,%%cr%d", reg_name(id_src->reg, 4), id_dest->reg);
   Log("r2cr:%d",id_dest->reg);
+  if(id_dest->reg==0) Log("cr0: 0x%08x",cpu.cr0.val);
+  if(id_dest->reg==3) Log("cr3: 0x%08x",cpu.cr3.val);
 }
 
 make_EHelper(mov_cr2r) {
