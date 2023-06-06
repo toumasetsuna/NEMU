@@ -38,9 +38,6 @@ int fs_open(const char *pathname, int flags, int mode){
     panic("file not found");
     return -1;
 }
-ssize_t min(ssize_t x,ssize_t y){
-  return x<y?x:y;
-}
 ssize_t fs_read(int fd, void *buf, size_t len){
   assert((fd< NR_FILES));
     //printf("len0:%d\n",len);

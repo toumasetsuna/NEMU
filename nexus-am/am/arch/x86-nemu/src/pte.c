@@ -31,7 +31,6 @@ void _pte_init(void* (*palloc)(), void (*pfree)(void*)) {
     for (; pdir_idx < pdir_idx_end; pdir_idx ++) {
       // fill PDE
       kpdirs[pdir_idx] = (uintptr_t)ptab | PTE_P;
-
       // fill PTE
       PTE pte = PGADDR(pdir_idx, 0, 0) | PTE_P;
       PTE pte_end = PGADDR(pdir_idx + 1, 0, 0) | PTE_P;
@@ -67,6 +66,14 @@ void _switch(_Protect *p) {
 }
 
 void _map(_Protect *p, void *va, void *pa) {
+  uint32_t* cr3=(uint32_t*)p->ptr;
+  uint32_t vaddr=(uint32_t) va;
+  uint32_t paddr=(uint32_t) pa;
+  uint32_t t0=vaddr>>22;
+  //uint32_t t1=(vaddr<<10)>>22;
+  //uint32_t t2=(vaddr<<20)>>20;
+  uint32_t u0=paddr>>22;
+  cr3[t0]=cr3[u0];
 }
 
 void _unmap(_Protect *p, void *va) {

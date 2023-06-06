@@ -2144,9 +2144,9 @@ PAL_InterpretInstruction(
       //
       // Stop current playing music
       //
-      PAL_PlayMUS(0, FALSE,
-         (pScript->rgwOperand[0] == 0) ? 2.0f : (FLOAT)(pScript->rgwOperand[0]) * 2);
-      gpGlobals->wNumMusic = 0;
+      // PAL_PlayMUS(0, FALSE,
+      //    (pScript->rgwOperand[0] == 0) ? 2.0f : (FLOAT)(pScript->rgwOperand[0]) * 2);
+      // gpGlobals->wNumMusic = 0;
       break;
 
    case 0x0078:

@@ -8,5 +8,5 @@
 typedef char bool;
 #define true 1
 #define false 0
-
+#define min(x,y) ((x<y)?x:y)
 #endif
