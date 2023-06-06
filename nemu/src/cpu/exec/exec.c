@@ -14,6 +14,7 @@ typedef struct {
 #define IDEXW(id, ex, w)   {concat(decode_, id), concat(exec_, ex), w}
 #define IDEX(id, ex)       IDEXW(id, ex, 0)
 #define EXW(ex, w)         {NULL, concat(exec_, ex), w}
+
 #define EX(ex)             EXW(ex, 0)// no decoding no operand width
 #define EMPTY              EX(inv)
 
@@ -156,7 +157,7 @@ opcode_entry opcode_table [512] = {
   /* 0x14 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x18 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x1c */	EMPTY, EMPTY, EMPTY, EMPTY,
-  /* 0x20 */	IDEXW(mov_E2G,mov_cr2r,4), EMPTY, IDEXW(mov_G2E,mov_r2cr,4), EMPTY,
+  /* 0x20 */	IDEXW(mov_E2G,mov_cr2r,4), EMPTY, IDEXW(mov_E2G,mov_r2cr,4), EMPTY,
   /* 0x24 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x28 */	EMPTY, EMPTY, EMPTY, EMPTY,
   /* 0x2c */	EMPTY, EMPTY, EMPTY, EMPTY,
