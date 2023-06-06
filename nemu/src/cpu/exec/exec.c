@@ -14,7 +14,6 @@ typedef struct {
 #define IDEXW(id, ex, w)   {concat(decode_, id), concat(exec_, ex), w}
 #define IDEX(id, ex)       IDEXW(id, ex, 0)
 #define EXW(ex, w)         {NULL, concat(exec_, ex), w}
-
 #define EX(ex)             EXW(ex, 0)// no decoding no operand width
 #define EMPTY              EX(inv)
 
