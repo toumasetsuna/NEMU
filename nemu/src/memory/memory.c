@@ -19,7 +19,7 @@ paddr_t page_translate(vaddr_t addr){
   if(!(pde&1)) Log("invalid vaddr: 0x%0x8",addr);
   uint32_t pte=paddr_read(pde&~0xfff+4*t1, 4);
   if(!(pde&1)) Log("invalid vaddr: 0x%0x8",addr);
-  return pte+t2;
+  return pte&~0xfff+t2;
 }
 /* Memory accessing interfaces */
 
