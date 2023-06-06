@@ -24,7 +24,7 @@ paddr_t page_translate(vaddr_t addr){
   uint32_t ans=pte&~0xfff+t2;
   Log("vaddr:0x%08x",addr);
   Log("paddr:0x%08x",ans); 
-  //assert(addr==ans);
+  assert(addr==ans);
   return ans;
 }
 /* Memory accessing interfaces */
