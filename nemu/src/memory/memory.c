@@ -9,24 +9,24 @@
     })
 
 uint8_t pmem[PMEM_SIZE];
-paddr_t page_translate(vaddr_t vaddr){
-  /*if(~cpu.cr0.val&0x80000000)
+paddr_t page_translate(vaddr_t addr){
+  if(~cpu.cr0.val&0x80000000)
     return addr;
   uint32_t t0=addr>>22;
   uint32_t t1=(addr<<10)>>22;
   uint32_t t2=(addr<<20)>>20;
-  uint32_t pde=paddr_read(cpu.cr3.val&~0xfff+4*t0,4);
+  uint32_t pde=paddr_read((cpu.cr3.val&~0xfff)+4*t0,4);
   if(!(pde&1)) Log("invalid vaddr: 0x%08x",addr);
   assert(pde&1);
-  uint32_t pte=paddr_read(pde&~0xfff+4*t1, 4);
+  uint32_t pte=paddr_read((pde&~0xfff)+4*t1, 4);
   if(!(pte&1)) Log("invalid vaddr: 0x%08x",addr);
   assert(pte&1);
-  uint32_t ans=pte&~0xfff+t2;
+  uint32_t ans=(pte&~0xfff)+t2;
   Log("vaddr:0x%08x",addr);
-  Log("paddr:0x%08x",ans); */
+  Log("paddr:0x%08x",ans); 
   //paddr_t page_translate(vaddr_t vaddr) {
 
-if(~cpu.cr0.val & 0x80000000)
+/*if(~cpu.cr0.val & 0x80000000)
 
 return vaddr; // paging is not enabled
 
@@ -51,11 +51,11 @@ if(!(pte & 1)) Log("invalid vaddr = 0x%08x", vaddr);
 paddr_t paddr =(pte &~0xfff) + offset;
 
  return paddr;
-  }
+  }*/
 
-  /*assert(addr==ans);
+  assert(addr==ans);
   return ans;
-}*/
+}
 /* Memory accessing interfaces */
 
 uint32_t paddr_read(paddr_t addr, int len) {
