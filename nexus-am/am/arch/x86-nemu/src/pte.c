@@ -73,14 +73,14 @@ void _map(_Protect *p, void *va, void *pa) {
   uint32_t t1=(vaddr<<10)>>22;
   //uint32_t t2=(vaddr<<20)>>20;
   //uint32_t u0=paddr>>22;
-  uint32_t u1=(paddr<<10)>>22;
+  uint32_t u1=(paddr>>12)<<12;
   if(!(cr3[t0]&1)){
     PTE* uptabs= (PTE*)(palloc_f());
     cr3[t0]=(uint32_t)uptabs;
     if(!(cr3[t0]&1)) cr3[t0]=cr3[t0]&1;
   }
   cr3=(uint32_t*)(cr3[t0]&~0xfff);
-  cr3[t1]=u1<<12;
+  cr3[t1]=u1;
   if(!(cr3[t1]&1)) cr3[t1]=cr3[t1]&1;
 }
 
