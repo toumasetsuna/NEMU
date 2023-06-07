@@ -26,7 +26,7 @@ paddr_t page_translate(vaddr_t addr){
   }
   assert(pte&1);
   uint32_t ans=(pte&~0xfff)+t2;
-  if(addr!=ans) Log("vaddr 0x%08x to paddr 0x%08x",addr,ans);
+  //if(addr!=ans) Log("vaddr 0x%08x to paddr 0x%08x",addr,ans);
   //assert(addr==ans);
   return ans;
 }
