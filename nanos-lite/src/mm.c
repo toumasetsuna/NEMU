@@ -22,7 +22,7 @@ int mm_brk(uint32_t new_brk) {
   else{
 
     if (new_brk > current->max_brk) {
-      for(uint32_t i=current->max_brk;i<new_brk+PGSIZE;i+=PGSIZE){
+      for(uint32_t i=current->max_brk;i<new_brk;i+=PGSIZE){
         void* h=new_page();
          printf("0x%08x 0x%08x\n",i,(uint32_t)h);
         _map(&current->as,(void*)i,h);
