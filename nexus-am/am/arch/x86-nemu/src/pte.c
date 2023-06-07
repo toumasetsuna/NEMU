@@ -66,6 +66,7 @@ void _switch(_Protect *p) {
 }
 
 void _map(_Protect *p, void *va, void *pa) {
+ 
   uint32_t* cr3=(uint32_t*)p->ptr;
   uint32_t vaddr=(uint32_t) va;
   uint32_t paddr=(uint32_t) pa;
