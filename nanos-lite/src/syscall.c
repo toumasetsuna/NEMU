@@ -7,9 +7,9 @@
 #include <sys/types.h>
 extern off_t fs_1seek(int fd, off_t offset, int whence);
 extern ssize_t fs_read(int fd, void *buf, size_t len);
-extern ssize_t fs_write(int fd, void *buf, size_t len);\
+extern ssize_t fs_write(int fd, void *buf, size_t len);
 extern int fs_open(const char *pathname, int flags, int mode);
-
+extern int mm_brk(uint32_t new_brk) ;
 int fs_close(int fd);
 _RegSet* do_syscall(_RegSet *r) {
   uintptr_t a[4];
@@ -34,7 +34,7 @@ _RegSet* do_syscall(_RegSet *r) {
     SYSCALL_ARG1(r) =fs_write(a[1],(void*)a[2],a[3]);
     break;
   case SYS_brk:
-    SYSCALL_ARG1(r) = 0;
+    SYSCALL_ARG1(r) =mm_brk(a[1]);
     break;
   case SYS_lseek:
     SYSCALL_ARG1(r)=fs_1seek(a[1],a[2],a[3]);

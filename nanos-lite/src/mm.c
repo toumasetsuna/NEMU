@@ -19,7 +19,6 @@ int mm_brk(uint32_t new_brk) {
   if (current->cur_brk == 0){
     current->cur_brk = current->max_brk = new_brk; 
   }
- 
   else{
 
     if (new_brk > current->max_brk) {
