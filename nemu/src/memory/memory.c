@@ -19,10 +19,14 @@ paddr_t page_translate(vaddr_t addr){
   if(!(pde&1)) Log("invalid vaddr: 0x%08x",addr);
   assert(pde&1);
   uint32_t pte=paddr_read((pde&~0xfff)+4*t1, 4);
-  if(!(pte&1)) Log("invalid vaddr: 0x%08x",addr);
+  if(!(pte&1)) {
+    Log("invalid vaddr: 0x%08x",addr);
+    Log("invalid pde: 0x%08x",pde );
+    Log("invalid pte: 0x%08x",pte);
+  }
   assert(pte&1);
   uint32_t ans=(pte&~0xfff)+t2;
-  //if(addr!=ans) Log("vaddr 0x%08x to paddr 0x%08x",addr,ans);
+  if(addr!=ans) Log("vaddr 0x%08x to paddr 0x%08x",addr,ans);
   //assert(addr==ans);
   return ans;
 }
