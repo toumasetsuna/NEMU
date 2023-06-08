@@ -1,5 +1,5 @@
 #include <x86.h>
-
+#include "debug.h"
 #define PG_ALIGN __attribute((aligned(PGSIZE)))
 
 static PDE kpdirs[NR_PDE] PG_ALIGN;
@@ -81,10 +81,9 @@ void _map(_Protect *p, void *va, void *pa) {
      cr3[t0]=cr3[t0]|PTE_P;
   }
   cr3=(uint32_t*)(cr3[t0]&~0xfff);
-  if(!cr3[t1]&PTE_P){
-    cr3[t1]=u1;
-    cr3[t1]=cr3[t1]|PTE_P;
-  }
+  assert(!(cr3[t1]&1));
+  cr3[t1]=u1;
+  cr3[t1]=cr3[t1]|PTE_P;
 }
 
 void _unmap(_Protect *p, void *va) {
