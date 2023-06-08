@@ -1,5 +1,5 @@
 #include <x86.h>
-#include "debug.h"
+#include "common.h"
 #define PG_ALIGN __attribute((aligned(PGSIZE)))
 
 static PDE kpdirs[NR_PDE] PG_ALIGN;
