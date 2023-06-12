@@ -28,6 +28,7 @@ void load_prog(const char *filename) {
 }
 
 _RegSet* schedule(_RegSet *prev) {
+  Log("schedule");
   current->tf= prev;
   current=&pcb[0];
   _switch(&current->as);
