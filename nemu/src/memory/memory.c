@@ -1,6 +1,6 @@
 #include "device/mmio.h"
 #include "nemu.h"
-
+#include "common.h"
 #define PMEM_SIZE (128 * 1024 * 1024)
 
 #define pmem_rw(addr, type) *(type *)({\

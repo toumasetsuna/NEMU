@@ -23,5 +23,5 @@ typedef uint16_t ioaddr_t;
 
 #define false 0
 #define true 1
-
+#define min(x,y) ((x<y)?x:y)
 #endif
