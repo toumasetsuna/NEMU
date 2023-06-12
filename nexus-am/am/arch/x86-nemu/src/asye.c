@@ -1,6 +1,7 @@
 #include <am.h>
 #include <x86.h>
 #include<stdio.h>
+#include<common.h>
 static _RegSet* (*H)(_Event, _RegSet*) = NULL;
 
 void vecsys();
@@ -49,6 +50,7 @@ _RegSet *_make(_Area stack, void *entry, void *arg) {
 
 void _trap() {
    asm volatile("int $0x81");
+   Log("int $0x81");
 }
 
 int _istatus(int enable) {
