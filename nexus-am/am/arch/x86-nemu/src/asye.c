@@ -11,7 +11,6 @@ _RegSet* irq_handle(_RegSet *tf) {
   _RegSet *next = tf;
   //printf("%d %d %d %d\n",tf->eax,tf->ebx,tf->ecx,tf->edx);
   if (H) {
-    
     _Event ev;
     switch (tf->irq) {
       case 0x80: ev.event = _EVENT_SYSCALL; break;
