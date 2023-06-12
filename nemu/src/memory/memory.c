@@ -43,17 +43,22 @@ void paddr_write(paddr_t addr, int len, uint32_t data) {
 }
 
 uint32_t vaddr_read(vaddr_t addr, int len) {
-  paddr_t addr0=page_translate(addr);
+  paddr_t paddr=page_translate(addr);
   //assert(addr0==addr);
-  paddr_t addr1=page_translate(addr+len-1);
-  assert(addr1-addr0==len-1);
-  return paddr_read(addr0, len);
+  uint32_t len1=min(0x1000-(len&0xfff),len);
+  if(len1!=len) {
+    uint32_t x=paddr_read(paddr,len1);
+    uint32_t len2=len-len1;
+    paddr_t paddr2=page_translate(paddr+len1);
+    uint32_t y=paddr_read(paddr2,len2);
+    return x<<(len2<<3)+y;
+  } 
+  return paddr_read(paddr, len);
 }
 
 void vaddr_write(vaddr_t addr, int len, uint32_t data) {
   paddr_t addr0=page_translate(addr);
   //assert(addr0==addr);
   paddr_t addr1=page_translate(addr+len-1);
-  assert(addr1-addr0==len-1);
   paddr_write(addr0, len, data);
 }
