@@ -5,7 +5,7 @@
 #include "memory.h"
 
 #define STACK_SIZE (8 * PGSIZE)
-
+_RegSet* schedule(_RegSet *prev);
 typedef union {
   uint8_t stack[STACK_SIZE] PG_ALIGN;
   struct {

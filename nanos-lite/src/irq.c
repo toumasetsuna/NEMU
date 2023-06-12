@@ -1,5 +1,6 @@
 #include "am.h"
 #include "common.h"
+#include "proc.h"
 extern _RegSet* do_syscall(_RegSet *r);
 static _RegSet* do_event(_Event e, _RegSet* r) {
   switch (e.event) {
@@ -7,6 +8,8 @@ static _RegSet* do_event(_Event e, _RegSet* r) {
       //printf("System Call\n");
       do_syscall(r);
       break;
+    case _EVENT_TRAP:
+      schedule(r);
     default: panic("Unhandled event ID = %d", e.event);
   }
 
