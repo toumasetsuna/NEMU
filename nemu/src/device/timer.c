@@ -9,10 +9,10 @@ static uint32_t *rtc_port_base;
 void timer_intr() {
   static int num=0;
   num++;
-  if(num!=10) return;
+  if(num!=1000) return;
   num=0;
-  static uint32_t old=5;
-  static uint32_t mytime=5;
+  static uint32_t old=0;
+  static uint32_t mytime=0;
   if (nemu_state == NEMU_RUNNING) {
     struct timeval now;
     gettimeofday(&now, NULL);
@@ -20,8 +20,8 @@ void timer_intr() {
     uint32_t useconds = now.tv_usec;
     
     mytime= seconds * 1000 + (useconds + 500) / 1000;
-    Log("mytime: %ud",mytime);
-    Log("old: %ud",old);
+    //Log("mytime: %ud",mytime);
+    //Log("old: %ud",old);
     if(mytime-old>1){
        old=mytime;
        dev_raise_intr();
