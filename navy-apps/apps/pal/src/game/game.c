@@ -95,13 +95,13 @@ PAL_GameMain(
       //
       // Do some initialization at game start.
       //
-      printf("%d\n",gpGlobals->g.rgScene[0].wMapNum);
+      printf("in cycle %d\n",gpGlobals->g.rgScene[0].wMapNum);
       if (gpGlobals->fGameStart)
       {
          PAL_GameStart();
          gpGlobals->fGameStart = FALSE;
       }
-
+       printf("before load resources %d\n",gpGlobals->g.rgScene[0].wMapNum);
 
       //
       // Load the game resources if needed.

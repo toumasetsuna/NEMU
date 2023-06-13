@@ -3050,7 +3050,9 @@ PAL_RunTriggerScript(
       UTIL_WriteLog(LOG_DEBUG, "[SCRIPT] %.4x: %.4x %.4x %.4x %.4x\n", wScriptEntry,
          pScript->wOperation, pScript->rgwOperand[0], pScript->rgwOperand[1],
          pScript->rgwOperand[2], pScript->rgwOperand[3]);
-
+      printf("%d","[SCRIPT] %.4x: %.4x %.4x %.4x %.4x\n", wScriptEntry,
+         pScript->wOperation, pScript->rgwOperand[0], pScript->rgwOperand[1],
+         pScript->rgwOperand[2], pScript->rgwOperand[3]);
       switch (pScript->wOperation)
       {
       case 0x0000:
