@@ -92,8 +92,8 @@ void _unmap(_Protect *p, void *va) {
 _RegSet *_umake(_Protect *p, _Area ustack, _Area kstack, void *entry, char *const argv[], char *const envp[]) {
   uint32_t* t=(uintptr_t*) ustack.end;
   t[0]=0;//start arg
-  t[-1]=0;//cs
-  t[-2]=8+(1<<9);//eflag
+  t[-1]=8+(1<<9);//eflag
+  t[-2]=0;//cs
   t[-3]=(uint32_t)entry;//entry
   t[-4]=0;//error code
   t[-5]=0x81;//irq_id
