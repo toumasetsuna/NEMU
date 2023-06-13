@@ -16,16 +16,16 @@ void timer_intr() {
     if(num==1){
       struct timeval now;
       gettimeofday(&now, NULL);
-      uint32_t seconds = now.tv_sec;
-      uint32_t useconds = now.tv_usec;
+      int32_t seconds = now.tv_sec;
+      int32_t useconds = now.tv_usec;
       old=seconds * 1000 + (useconds + 500) / 1000;
       mytime=old;
       return;
     }
     struct timeval now;
     gettimeofday(&now, NULL);
-    uint32_t seconds = now.tv_sec;
-    uint32_t useconds = now.tv_usec;
+    int32_t seconds = now.tv_sec;
+    int32_t useconds = now.tv_usec;
     
     mytime= seconds * 1000 + (useconds + 500) / 1000;
     Log("mytime: %d",mytime);
