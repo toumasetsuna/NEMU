@@ -16,7 +16,7 @@ _RegSet* irq_handle(_RegSet *tf) {
     switch (tf->irq) {
       case 0x80: ev.event = _EVENT_SYSCALL; break;
       case 0x81: ev.event = _EVENT_TRAP; Log("TRAP");break;
-      case 0x32: ev.event = _EVENT_IRQ_TIME;Log("Time");break;
+      case 0x32: ev.event = _EVENT_IRQ_TIME;break;
       default: ev.event = _EVENT_ERROR; break;
     }
     next = H(ev, tf);

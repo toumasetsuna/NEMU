@@ -14,7 +14,6 @@ void timer_intr() {
     }
     if(num==1000) num=1;
   if (nemu_state == NEMU_RUNNING) {
-   
     static int old,mytime;
     if(num==0){
       struct timeval now;
@@ -33,10 +32,7 @@ void timer_intr() {
     int32_t useconds = now.tv_usec;
     
     mytime= seconds * 1000 + (useconds + 500) / 1000;
-   // Log("mytime: %d",mytime);
-   // Log("old: %d",old);
-    if(mytime-old>1000){
-       //Log("interval:%d",mytime-old);
+    if(mytime-old>100){
        old=mytime;
        dev_raise_intr();
        Log("sent clock");
