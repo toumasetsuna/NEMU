@@ -7,19 +7,20 @@ extern void dev_raise_intr(void);
 void rtc_io_handler(ioaddr_t addr, int len, bool is_write);
 static uint32_t *rtc_port_base;
 void timer_intr() {
-  static int num=0;
-  num++;
-  if(num!=1000) return;
-  num=0;
-  uint32_t old,mytime;
-  if(num==1){
-    struct timeval now;
-    gettimeofday(&now, NULL);
-    uint32_t seconds = now.tv_sec;
-    uint32_t useconds = now.tv_usec;
-    old=seconds * 1000 + (useconds + 500) / 1000;
-  }
   if (nemu_state == NEMU_RUNNING) {
+    static int num=0;
+    num++;
+    if(num!=1000) return;
+    num=0;
+    uint32_t old,mytime;
+    if(num==1){
+      struct timeval now;
+      gettimeofday(&now, NULL);
+      uint32_t seconds = now.tv_sec;
+      uint32_t useconds = now.tv_usec;
+      old=seconds * 1000 + (useconds + 500) / 1000;
+      return;
+    }
     struct timeval now;
     gettimeofday(&now, NULL);
     uint32_t seconds = now.tv_sec;
