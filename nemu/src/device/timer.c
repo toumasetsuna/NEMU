@@ -7,12 +7,14 @@ extern void dev_raise_intr(void);
 void rtc_io_handler(ioaddr_t addr, int len, bool is_write);
 static uint32_t *rtc_port_base;
 void timer_intr() {
-  if (nemu_state == NEMU_RUNNING) {
-    static int num=0;
+   static int num=0;
     if(num!=0&&num!=1000){
       num++;
+      return;
     }
     if(num==1000) num=1;
+  if (nemu_state == NEMU_RUNNING) {
+   
     static int old,mytime;
     if(num==0){
       struct timeval now;
