@@ -28,8 +28,8 @@ void timer_intr() {
     uint32_t useconds = now.tv_usec;
     
     mytime= seconds * 1000 + (useconds + 500) / 1000;
-    Log("mytime: %ud",mytime);
-    Log("old: %ud",old);
+    Log("mytime: %d",mytime);
+    Log("old: %d",old);
     if(mytime-old>2000){
        old=mytime;
        dev_raise_intr();
