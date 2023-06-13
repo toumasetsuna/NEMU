@@ -2671,12 +2671,14 @@ PAL_InterpretInstruction(
       if (pScript->rgwOperand[0] == 0xFFFF)
       {
          gpGlobals->g.rgScene[gpGlobals->wNumScene - 1].wMapNum = pScript->rgwOperand[1];
+         printf("MAPNUM:%d\n",gpGlobals->g.rgScene[gpGlobals->wNumScene - 1].wMapNum);
          PAL_SetLoadFlags(kLoadScene);
          PAL_LoadResources();
       }
       else
       {
          gpGlobals->g.rgScene[pScript->rgwOperand[0] - 1].wMapNum = pScript->rgwOperand[1];
+          printf("MAPNUM:%d\n",gpGlobals->g.rgScene[pScript->rgwOperand[0] - 1].wMapNum);
       }
       break;
 
