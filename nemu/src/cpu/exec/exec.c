@@ -268,7 +268,7 @@ void exec_wrapper(bool print_flag) {
   if (cpu.INTR& cpu.eflag.IF){
      Log("TIMER_IRQ");
      cpu.INTR=false;
-     raise_intr(0x80,cpu.eip);
+     raise_intr(0x32,cpu.eip);
      update_eip();
   }
 }
