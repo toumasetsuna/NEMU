@@ -36,6 +36,6 @@ _RegSet* schedule(_RegSet *prev) {
 void change_game(){
   Log("change game");
   PCB* old=current_game;
-  if(current_game=&pcb[1]) current_game=&pcb[2];
+  if(current_game==&pcb[1]) current_game=&pcb[2];
   else current_game=&pcb[1]; 
 }
