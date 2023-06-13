@@ -17,7 +17,7 @@ void timer_intr() {
     gettimeofday(&now, NULL);
     int seconds = now.tv_sec;
     int useconds = now.tv_usec;
-    double old;
+    static double old;
     mytime= seconds * 1000 + (useconds + 500) / 1000;
     if(mytime-old>1){
        old=mytime;
