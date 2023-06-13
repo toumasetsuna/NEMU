@@ -19,6 +19,7 @@ void timer_intr() {
       uint32_t seconds = now.tv_sec;
       uint32_t useconds = now.tv_usec;
       old=seconds * 1000 + (useconds + 500) / 1000;
+      mytime=old;
       return;
     }
     struct timeval now;
