@@ -84,7 +84,7 @@ PAL_GameMain(
    // Initialize game data and set the flags to load the game resources.
    //
    PAL_InitGameData(gpGlobals->bCurrentSaveSlot);
-
+   printf("%d\n",gpGlobals->g.rgScene[0].wMapNum);
    //
    // Run the main game loop.
    //
@@ -95,6 +95,7 @@ PAL_GameMain(
       //
       // Do some initialization at game start.
       //
+      printf("%d\n",gpGlobals->g.rgScene[0].wMapNum);
       if (gpGlobals->fGameStart)
       {
          PAL_GameStart();
