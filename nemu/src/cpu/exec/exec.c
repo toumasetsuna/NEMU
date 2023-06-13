@@ -270,6 +270,6 @@ void exec_wrapper(bool print_flag) {
      cpu.INTR=false;
      raise_intr(TIMER_IRQ,cpu.eip);
      Log("intr finish");
-     //update_eip();
+     update_eip();
   }
 }
