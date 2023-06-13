@@ -93,7 +93,7 @@ _RegSet *_umake(_Protect *p, _Area ustack, _Area kstack, void *entry, char *cons
   uint32_t* t=(uintptr_t*) ustack.end;
   t[0]=0;//start arg
   t[-1]=0;//cs
-  t[-2]=8+1<<9;//eflag
+  t[-2]=8+1<<10;//eflag
   t[-3]=(uint32_t)entry;//entry
   t[-4]=0;//error code
   t[-5]=0x81;//irq_id
