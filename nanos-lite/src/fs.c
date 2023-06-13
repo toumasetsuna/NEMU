@@ -33,6 +33,7 @@ int fs_open(const char *pathname, int flags, int mode){
     for(int i=3;i<NR_FILES;i++)
     if(strcmp(file_table[i].name,pathname)==0) {
       printf("file %d found\n",i);
+      file_table[i].open_offset=0;
       return i;
     }
     panic("file not found");
