@@ -14,8 +14,8 @@ static _RegSet* do_event(_Event e, _RegSet* r) {
       break;
     default: panic("Unhandled event ID = %d", e.event);
   }
-
-  return NULL;
+  
+  return schedule(r);
 }
 
 void init_irq(void) {

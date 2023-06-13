@@ -18,6 +18,5 @@ uintptr_t loader(_Protect *as, const char *filename) {
     _map(as,DEFAULT_ENTRY+i,p);
     fs_read(fd, p, len1);
   }
-  
   return (uintptr_t)DEFAULT_ENTRY;
 }

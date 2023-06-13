@@ -41,7 +41,6 @@ int fs_open(const char *pathname, int flags, int mode){
 ssize_t fs_read(int fd, void *buf, size_t len){
   assert((fd< NR_FILES));
     //printf("len0:%d\n",len);
-    
     if(fd==FD_EVENTS){
       //Log("event\n");
       return events_read(buf,len);
