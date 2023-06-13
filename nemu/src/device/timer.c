@@ -12,7 +12,7 @@ void timer_intr() {
     num++;
     if(num!=1000) return;
     num=0;
-    static uint32_t old,mytime;
+    static int old,mytime;
     if(num==1){
       struct timeval now;
       gettimeofday(&now, NULL);
@@ -31,6 +31,7 @@ void timer_intr() {
     Log("mytime: %d",mytime);
     Log("old: %d",old);
     if(mytime-old>2000){
+       Log("interval:%d",mytime-old);
        old=mytime;
        dev_raise_intr();
        Log("sent clock");
