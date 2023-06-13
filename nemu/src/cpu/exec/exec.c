@@ -265,10 +265,11 @@ void exec_wrapper(bool print_flag) {
 #endif
   #define TIMER_IRQ 0x32
   
-  /*if (cpu.INTR& cpu.eflag.IF){
-     //Log("TIMER_IRQ");
+  if (cpu.INTR& cpu.eflag.IF){
+     Log("TIMER_IRQ");
      cpu.INTR=false;
      raise_intr(TIMER_IRQ,cpu.eip);
+     Log("INTR finish");
      //update_eip();
-  }*/
+  }
 }
