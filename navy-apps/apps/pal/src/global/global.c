@@ -362,6 +362,7 @@ PAL_LoadGame(
    //
    // Try to open the specified file
    //
+   printf("%s",szFileName);
    fp = fopen(szFileName, "rb");
    if (fp == NULL)
    {
@@ -413,6 +414,7 @@ PAL_LoadGame(
    memset(gpGlobals->rgPoisonStatus, 0, sizeof(gpGlobals->rgPoisonStatus));
    memcpy(gpGlobals->rgInventory, s.rgInventory, sizeof(gpGlobals->rgInventory));
    memcpy(gpGlobals->g.rgScene, s.rgScene, sizeof(gpGlobals->g.rgScene));
+   printf("%d\n",gpGlobals->g.rgScene[0].wMapNum);
    memcpy(gpGlobals->g.rgObject, s.rgObject, sizeof(gpGlobals->g.rgObject));
    memcpy(gpGlobals->g.lprgEventObject, s.rgEventObject,
       sizeof(EVENTOBJECT) * gpGlobals->g.nEventObject);
