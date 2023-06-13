@@ -11,7 +11,7 @@ void timer_intr() {
     uint32_t old=rtc_port_base[0];
     rtc_io_handler(0,0,0);
     uint32_t new=rtc_port_base[0];
-    if(new-old>500) dev_raise_intr();
+    if(new-old>10) dev_raise_intr();
   }
 }
 
