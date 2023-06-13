@@ -40,8 +40,8 @@ void cpu_exec(uint64_t n) {
 #ifdef HAS_IOE
     extern timer_intr();
     extern void device_update();
-    timer_intr();
     device_update();
+    timer_intr();
 #endif
 
     if (nemu_state != NEMU_RUNNING) { return; }
