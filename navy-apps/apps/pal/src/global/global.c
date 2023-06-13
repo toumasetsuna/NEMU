@@ -414,7 +414,7 @@ PAL_LoadGame(
    memset(gpGlobals->rgPoisonStatus, 0, sizeof(gpGlobals->rgPoisonStatus));
    memcpy(gpGlobals->rgInventory, s.rgInventory, sizeof(gpGlobals->rgInventory));
    memcpy(gpGlobals->g.rgScene, s.rgScene, sizeof(gpGlobals->g.rgScene));
-   printf("%d\n",gpGlobals->g.rgScene[0].wMapNum);
+   printf("%d\n",gpGlobals->g.rgScene);
    memcpy(gpGlobals->g.rgObject, s.rgObject, sizeof(gpGlobals->g.rgObject));
    memcpy(gpGlobals->g.lprgEventObject, s.rgEventObject,
       sizeof(EVENTOBJECT) * gpGlobals->g.nEventObject);
@@ -553,7 +553,8 @@ PAL_InitGameData(
       printf("load default game\n");
       PAL_LoadDefaultGame();
    }
-   printf("already load game\n");
+   printf("already load game");
+   printf("\%d\n",gpGlobals->wNumScene);
    gpGlobals->fGameStart = TRUE;
    gpGlobals->fNeedToFadeIn = FALSE;
    gpGlobals->iCurInvMenuItem = 0;
