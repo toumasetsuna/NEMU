@@ -362,7 +362,6 @@ PAL_LoadGame(
    //
    // Try to open the specified file
    //
-   printf("%s",szFileName);
    fp = fopen(szFileName, "rb");
    if (fp == NULL)
    {
@@ -372,7 +371,6 @@ PAL_LoadGame(
    //
    // Read all data from the file and close.
    //
-   fseek(fp,0,SEEK_SET);
    fread(&s, sizeof(SAVEDGAME), 1, fp);
    fclose(fp);
 
@@ -387,7 +385,6 @@ PAL_LoadGame(
    gpGlobals->viewport = PAL_XY(s.wViewportX, s.wViewportY);
    gpGlobals->wMaxPartyMemberIndex = s.nPartyMember;
    gpGlobals->wNumScene = s.wNumScene;
-   printf("Load Game: %d\n",gpGlobals->wNumScene);
    gpGlobals->fNightPalette = (s.wPaletteOffset != 0);
    gpGlobals->wPartyDirection = s.wPartyDirection;
    gpGlobals->wNumMusic = s.wNumMusic;
@@ -416,7 +413,6 @@ PAL_LoadGame(
    memset(gpGlobals->rgPoisonStatus, 0, sizeof(gpGlobals->rgPoisonStatus));
    memcpy(gpGlobals->rgInventory, s.rgInventory, sizeof(gpGlobals->rgInventory));
    memcpy(gpGlobals->g.rgScene, s.rgScene, sizeof(gpGlobals->g.rgScene));
-   
    memcpy(gpGlobals->g.rgObject, s.rgObject, sizeof(gpGlobals->g.rgObject));
    memcpy(gpGlobals->g.lprgEventObject, s.rgEventObject,
       sizeof(EVENTOBJECT) * gpGlobals->g.nEventObject);
@@ -552,11 +548,9 @@ PAL_InitGameData(
       //
       // Cannot load the saved game file. Load the defaults.
       //
-      printf("load default game\n");
       PAL_LoadDefaultGame();
    }
-   printf("already load game");
-   printf("%d\n",gpGlobals->wNumScene);
+
    gpGlobals->fGameStart = TRUE;
    gpGlobals->fNeedToFadeIn = FALSE;
    gpGlobals->iCurInvMenuItem = 0;
@@ -869,7 +863,6 @@ PAL_UpdateEquipments(
 
          if (w != 0)
          {
-            printf("script: %d\n",gpGlobals->g.rgObject[w].item.wScriptOnEquip);
             gpGlobals->g.rgObject[w].item.wScriptOnEquip =
                PAL_RunTriggerScript(gpGlobals->g.rgObject[w].item.wScriptOnEquip, (WORD)i);
          }

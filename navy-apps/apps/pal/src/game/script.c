@@ -2144,9 +2144,9 @@ PAL_InterpretInstruction(
       //
       // Stop current playing music
       //
-      // PAL_PlayMUS(0, FALSE,
-      //    (pScript->rgwOperand[0] == 0) ? 2.0f : (FLOAT)(pScript->rgwOperand[0]) * 2);
-      // gpGlobals->wNumMusic = 0;
+      PAL_PlayMUS(0, FALSE,
+         (pScript->rgwOperand[0] == 0) ? 2.0f : (FLOAT)(pScript->rgwOperand[0]) * 2);
+      gpGlobals->wNumMusic = 0;
       break;
 
    case 0x0078:
@@ -2671,14 +2671,12 @@ PAL_InterpretInstruction(
       if (pScript->rgwOperand[0] == 0xFFFF)
       {
          gpGlobals->g.rgScene[gpGlobals->wNumScene - 1].wMapNum = pScript->rgwOperand[1];
-         printf("MAPNUM:%d\n",gpGlobals->g.rgScene[gpGlobals->wNumScene - 1].wMapNum);
          PAL_SetLoadFlags(kLoadScene);
          PAL_LoadResources();
       }
       else
       {
          gpGlobals->g.rgScene[pScript->rgwOperand[0] - 1].wMapNum = pScript->rgwOperand[1];
-          printf("MAPNUM:%d\n",gpGlobals->g.rgScene[pScript->rgwOperand[0] - 1].wMapNum);
       }
       break;
 
@@ -3050,9 +3048,7 @@ PAL_RunTriggerScript(
       UTIL_WriteLog(LOG_DEBUG, "[SCRIPT] %.4x: %.4x %.4x %.4x %.4x\n", wScriptEntry,
          pScript->wOperation, pScript->rgwOperand[0], pScript->rgwOperand[1],
          pScript->rgwOperand[2], pScript->rgwOperand[3]);
-      printf("[SCRIPT] %.4x: %.4x %.4x %.4x %.4x\n", wScriptEntry,
-         pScript->wOperation, pScript->rgwOperand[0], pScript->rgwOperand[1],
-         pScript->rgwOperand[2], pScript->rgwOperand[3]);
+
       switch (pScript->wOperation)
       {
       case 0x0000:
