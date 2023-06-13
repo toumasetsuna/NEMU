@@ -12,6 +12,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
    * That is, use ``NO'' to index the IDT.
    */
   rtl_push(&cpu.eflag);
+  cpu.eflag.IF=0;
   rtl_push(&cpu.CS);
   rtl_push(&ret_addr);
   rtl_mv(&t0,&cpu.idtr.base);
@@ -30,5 +31,5 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
 }
 
 void dev_raise_intr() {
-   //cpu.INTR=true;
+   cpu.INTR=true;
 }
