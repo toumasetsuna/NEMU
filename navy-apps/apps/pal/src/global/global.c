@@ -550,9 +550,10 @@ PAL_InitGameData(
       //
       // Cannot load the saved game file. Load the defaults.
       //
+      printf("load default game\n");
       PAL_LoadDefaultGame();
    }
-
+   printf("already load game\n");
    gpGlobals->fGameStart = TRUE;
    gpGlobals->fNeedToFadeIn = FALSE;
    gpGlobals->iCurInvMenuItem = 0;

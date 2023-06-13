@@ -241,6 +241,7 @@ PAL_LoadResources(
       //
       NDL_Render();
       i = gpGlobals->wNumScene - 1;
+      printf("%d\n",gpGlobals->g.rgScene[0].wMapNum);
       gpResources->lpMap = PAL_LoadMap(gpGlobals->g.rgScene[i].wMapNum,
          fpMAP, fpGOP);
 
