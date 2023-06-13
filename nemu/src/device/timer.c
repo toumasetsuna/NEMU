@@ -36,10 +36,10 @@ void timer_intr() {
    // Log("mytime: %d",mytime);
    // Log("old: %d",old);
     if(mytime-old>100){
-      // Log("interval:%d",mytime-old);
+       Log("interval:%d",mytime-old);
        old=mytime;
        dev_raise_intr();
-       //Log("sent clock");
+       Log("sent clock");
     }
   }
 }
