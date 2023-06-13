@@ -866,6 +866,7 @@ PAL_UpdateEquipments(
 
          if (w != 0)
          {
+            printf("script: %d\n",gpGlobals->g.rgObject[w].item.wScriptOnEquip);
             gpGlobals->g.rgObject[w].item.wScriptOnEquip =
                PAL_RunTriggerScript(gpGlobals->g.rgObject[w].item.wScriptOnEquip, (WORD)i);
          }
