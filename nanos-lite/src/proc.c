@@ -27,7 +27,7 @@ void load_prog(const char *filename) {
 
 }
 _RegSet* schedule(_RegSet *prev) {
-  Log("schedule");
+  //Log("schedule");
   current->tf= prev;
   //current=(current==current_game?&pcb[0]:current_game);
   current=&pcb[1];
