@@ -8,7 +8,7 @@ void rtc_io_handler(ioaddr_t addr, int len, bool is_write);
 static uint32_t *rtc_port_base;
 void timer_intr() {
   static uint32_t mytime=5;
-  if (nemu_state == NEMU_RUNNING) {
+  /*if (nemu_state == NEMU_RUNNING) {
     struct timeval now;
     gettimeofday(&now, NULL);
     uint32_t seconds = now.tv_sec;
@@ -16,7 +16,7 @@ void timer_intr() {
     uint32_t old=mytime;
     mytime= seconds * 1000 + (useconds + 500) / 1000;
     if(mytime-old>10) dev_raise_intr();
-  }
+  }*/
 }
 
 
