@@ -31,8 +31,8 @@ void timer_intr() {
     int32_t useconds = now.tv_usec;
     
     mytime= seconds * 1000 + (useconds + 500) / 1000;
-    Log("mytime: %d",mytime);
-    Log("old: %d",old);
+   // Log("mytime: %d",mytime);
+   // Log("old: %d",old);
     if(mytime-old>2000){
        Log("interval:%d",mytime-old);
        old=mytime;
