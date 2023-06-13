@@ -263,7 +263,7 @@ void exec_wrapper(bool print_flag) {
   void difftest_step(uint32_t);
   difftest_step(eip);
 #endif
-  #define TIMER_IRQ 32
+  #define TIMER_IRQ 0x32
   cpu.eflag.IF=1;
   if (cpu.INTR& cpu.eflag.IF){
      Log("TIMER_IRQ");
