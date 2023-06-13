@@ -13,8 +13,12 @@ size_t events_read(void *buf, size_t len) {
   int len_1=0;
   {
     int x=_read_key();
+
+    if(x==_KEY_F12){
+      change_game();
+      _trap();
+    }
     if(x!=_KEY_NONE){
-     
       sprintf(buf,"%s %s\n",x&0x8000?"kd":"ku",keyname[x&~0x8000]);
     }else{
       unsigned long t=_uptime();

@@ -49,7 +49,7 @@ _RegSet* do_syscall(_RegSet *r) {
   case SYS_close:
     SYSCALL_ARG1(r)=fs_close(a[1]);
     break;
-  default: panic("Unhandled syscall ID = %d", a[0]);
+    default: panic("Unhandled syscall ID = %d", a[0]);
   }
 
 
