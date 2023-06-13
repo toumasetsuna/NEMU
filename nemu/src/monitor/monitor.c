@@ -106,6 +106,7 @@ static inline void restart() {
   cpu.eip = ENTRY_START;
   uint32_t t=0x2;
   memcpy(&cpu.eflag, &t, 4);
+  cpu.eflag.IF=true;
   cpu.CS=8;
   cpu.cr0.val=0x60000011;
 #ifdef DIFF_TEST
