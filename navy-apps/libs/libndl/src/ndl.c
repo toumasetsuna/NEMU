@@ -130,7 +130,7 @@ static void get_display_info() {
   screen_w = screen_h = 0;
   char buf[128], key[128], value[128], *delim;
   char t[128];
-  rewind(dispinfo);
+  fseek(dispinfo,0,SEEK_SET);
   while (fgets(buf, 128, dispinfo)) {
     *(delim = strchr(buf, ':')) = '\0';
     sscanf(buf, "%s", key);
