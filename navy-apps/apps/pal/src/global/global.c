@@ -372,6 +372,7 @@ PAL_LoadGame(
    //
    // Read all data from the file and close.
    //
+   fseek(fp,0,SEEK_SET);
    fread(&s, sizeof(SAVEDGAME), 1, fp);
    fclose(fp);
 
