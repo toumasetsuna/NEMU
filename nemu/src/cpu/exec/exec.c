@@ -269,6 +269,6 @@ void exec_wrapper(bool print_flag) {
      //Log("TIMER_IRQ");
      cpu.INTR=false;
      raise_intr(TIMER_IRQ,cpu.eip);
-     update_eip();
+     //update_eip();
   }
 }
