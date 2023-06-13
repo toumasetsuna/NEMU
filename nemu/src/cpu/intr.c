@@ -27,6 +27,7 @@ void raise_intr(uint8_t NO, vaddr_t ret_addr) {
   t2=g.offset_15_0+(g.offset_31_16<<16);
   //printf("t2:0x%x\n",t2);
   decoding.jmp_eip = t2;
+  Log("jmp addr:%d",t2);
   decoding.is_jmp=true;
 }
 
