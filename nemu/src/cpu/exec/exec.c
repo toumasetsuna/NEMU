@@ -257,7 +257,7 @@ void exec_wrapper(bool print_flag) {
   uint32_t eip = cpu.eip;
 #endif
   //print_reg_info();
-  //update_eip();
+  update_eip();
   //print_reg_info();
 #ifdef DIFF_TEST
   void difftest_step(uint32_t);
@@ -270,6 +270,6 @@ void exec_wrapper(bool print_flag) {
      cpu.INTR=false;
      raise_intr(TIMER_IRQ,cpu.eip);
      Log("intr finish");
-     update_eip();
+     //update_eip();
   }
 }
