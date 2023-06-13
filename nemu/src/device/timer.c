@@ -15,7 +15,7 @@ void timer_intr() {
     uint32_t useconds = now.tv_usec;
     uint32_t old=mytime;
     mytime= seconds * 1000 + (useconds + 500) / 1000;
-    if(mytime-old>10) dev_raise_intr();
+    dev_raise_intr();
   }
 }
 
