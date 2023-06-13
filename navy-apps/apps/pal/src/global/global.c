@@ -386,6 +386,7 @@ PAL_LoadGame(
    gpGlobals->viewport = PAL_XY(s.wViewportX, s.wViewportY);
    gpGlobals->wMaxPartyMemberIndex = s.nPartyMember;
    gpGlobals->wNumScene = s.wNumScene;
+   printf("Load Game: %d\n",gpGlobals->wNumScene);
    gpGlobals->fNightPalette = (s.wPaletteOffset != 0);
    gpGlobals->wPartyDirection = s.wPartyDirection;
    gpGlobals->wNumMusic = s.wNumMusic;
@@ -414,7 +415,7 @@ PAL_LoadGame(
    memset(gpGlobals->rgPoisonStatus, 0, sizeof(gpGlobals->rgPoisonStatus));
    memcpy(gpGlobals->rgInventory, s.rgInventory, sizeof(gpGlobals->rgInventory));
    memcpy(gpGlobals->g.rgScene, s.rgScene, sizeof(gpGlobals->g.rgScene));
-   printf("%d\n",gpGlobals->g.rgScene);
+   
    memcpy(gpGlobals->g.rgObject, s.rgObject, sizeof(gpGlobals->g.rgObject));
    memcpy(gpGlobals->g.lprgEventObject, s.rgEventObject,
       sizeof(EVENTOBJECT) * gpGlobals->g.nEventObject);
@@ -554,7 +555,7 @@ PAL_InitGameData(
       PAL_LoadDefaultGame();
    }
    printf("already load game");
-   printf("\%d\n",gpGlobals->wNumScene);
+   printf("%d\n",gpGlobals->wNumScene);
    gpGlobals->fGameStart = TRUE;
    gpGlobals->fNeedToFadeIn = FALSE;
    gpGlobals->iCurInvMenuItem = 0;
