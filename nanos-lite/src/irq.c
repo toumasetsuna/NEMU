@@ -16,12 +16,11 @@ static _RegSet* do_event(_Event e, _RegSet* r) {
       break;
     case _EVENT_IRQ_TIME:
       Log("hello time");
-      return NULL;
       break;
     default: panic("Unhandled event ID = %d", e.event);
   }
   num++;
-  if(num==100){
+  if(num==10){
     num=-1;
     return schedule(r);
   }
