@@ -80,7 +80,7 @@ off_t fs_1seek(int fd, off_t offset, int whence){
   if(whence==SEEK_SET) file_table[fd].open_offset=offset;
   if(whence==SEEK_CUR) file_table[fd].open_offset+=offset;
   if(whence==SEEK_END) file_table[fd].open_offset=offset+file_table[fd].size;
-  Log("%d",offset);
+  //Log("%d",offset);
   return file_table[fd].open_offset;
 }
 
