@@ -30,7 +30,7 @@ _RegSet* schedule(_RegSet *prev) {
   Log("schedule");
   current->tf= prev;
   //current=(current==current_game?&pcb[0]:current_game);
-  current->tf=&pcb[1];
+  current=&pcb[1];
   _switch(&current->as);
   return current->tf;
 }
