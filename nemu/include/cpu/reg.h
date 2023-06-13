@@ -48,18 +48,19 @@ typedef struct {
   } idtr;
   uint32_t CS;
   union{
-  struct {
-    unsigned int :31;
-    unsigned int PG:1;
-  };
-  uint32_t val; 
+    struct {
+      unsigned int :31;
+      unsigned int PG:1;
+    };
+    uint32_t val; 
   }cr0;
   union{
-  struct {
-    unsigned int PDBR:20;
-  };
-  uint32_t val; 
+    struct {
+      unsigned int PDBR:20;
+    };
+    uint32_t val; 
   }cr3;
+  bool INTR;
 } CPU_state;
 
 extern CPU_state cpu;

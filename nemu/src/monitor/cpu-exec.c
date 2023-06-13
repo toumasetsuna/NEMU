@@ -38,7 +38,9 @@ void cpu_exec(uint64_t n) {
 #endif
 
 #ifdef HAS_IOE
+    extern timer_intr();
     extern void device_update();
+    timer_intr();
     device_update();
 #endif
 
