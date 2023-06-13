@@ -12,7 +12,7 @@ void timer_intr() {
     num++;
     if(num!=1000) return;
     num=0;
-    uint32_t old,mytime;
+    static uint32_t old,mytime;
     if(num==1){
       struct timeval now;
       gettimeofday(&now, NULL);
