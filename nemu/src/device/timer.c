@@ -29,7 +29,7 @@ void timer_intr() {
     mytime= seconds * 1000 + (useconds + 500) / 1000;
     //Log("mytime: %ud",mytime);
     //Log("old: %ud",old);
-    if(mytime-old>1){
+    if(mytime-old>10){
        old=mytime;
        dev_raise_intr();
        Log("sent clock");
