@@ -11,16 +11,18 @@ void timer_intr() {
   num++;
   if(num!=1000) return;
   num=0;
-  static int mytime=5;
+  static double mytime=5;
   if (nemu_state == NEMU_RUNNING) {
     struct timeval now;
     gettimeofday(&now, NULL);
     int seconds = now.tv_sec;
     int useconds = now.tv_usec;
-    int old;
-    if(mytime>old) old=mytime;
+    double old;
     mytime= seconds * 1000 + (useconds + 500) / 1000;
-    if(mytime-old>10) dev_raise_intr();
+    if(mytime-old>1){
+       old=mytime;
+       dev_raise_intr();
+    }
   }
 }
 
