@@ -35,7 +35,7 @@ void timer_intr() {
     mytime= seconds * 1000 + (useconds + 500) / 1000;
    // Log("mytime: %d",mytime);
    // Log("old: %d",old);
-    if(mytime-old>10000){
+    if(mytime-old>100){
       // Log("interval:%d",mytime-old);
        old=mytime;
        dev_raise_intr();
