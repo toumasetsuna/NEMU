@@ -264,9 +264,6 @@ void exec_wrapper(bool print_flag) {
   difftest_step(eip);
 #endif
   #define TIMER_IRQ 0x32
-  if(cpu.INTR&!cpu.eflag.IF){
-    Log("not open IF");
-  }
   if (cpu.INTR& cpu.eflag.IF){
      Log("TIMER_IRQ");
      cpu.INTR=false;
