@@ -9,7 +9,7 @@ static uint32_t *rtc_port_base;
 void timer_intr() {
   static int num=0;
   num++;
-  if(num!=1000) return;
+  if(num!=10) return;
   num=0;
   static double old=5;
   static double mytime=5;
@@ -20,6 +20,8 @@ void timer_intr() {
     int useconds = now.tv_usec;
     
     mytime= seconds * 1000 + (useconds + 500) / 1000;
+    Log("mytime: %f",mytime);
+    Log("old: %f",old);
     if(mytime-old>1){
        old=mytime;
        dev_raise_intr();
