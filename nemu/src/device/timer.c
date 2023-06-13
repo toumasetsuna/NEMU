@@ -35,7 +35,7 @@ void timer_intr() {
     if(mytime-old>100){
        old=mytime;
        dev_raise_intr();
-       Log("sent clock");
+       //Log("sent clock");
     }
   }
 }
